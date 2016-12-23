@@ -13,6 +13,7 @@ import { ProblemDetailComponent } from './problem-detail/problem-detail.componen
 import { ProblemDetailBreadcrumbComponent } from './problem-detail/problem-detail-breadcrumb/problem-detail-breadcrumb.component';
 import { ProblemHeaderComponent } from './problem-detail/problem-header/problem-header.component';
 import { ProblemBodyComponent } from './problem-detail/problem-body/problem-body.component';
+import {HightlightPipe} from "./problem-detail/problem-body/highlight.pipe";
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { ProblemBodyComponent } from './problem-detail/problem-body/problem-body
     ProblemDetailComponent,
     ProblemDetailBreadcrumbComponent,
     ProblemHeaderComponent,
-    ProblemBodyComponent
+    ProblemBodyComponent,
+    HightlightPipe
   ],
   providers: [ProblemService]
 })

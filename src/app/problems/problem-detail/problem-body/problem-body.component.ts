@@ -17,9 +17,33 @@ export class ProblemBodyComponent implements OnInit {
   endOffset;
   keywords: Keyword[] = [];
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {
+
+  }
 
   ngOnInit() {
+    // test only
+    this.problem.keywords.push({
+      id: 1,
+      start: 43,
+      length: 9
+      // bestLinkId: 0,
+      // links: [],
+    });
+    this.problem.keywords.push({
+      id: 3,
+      start: 70,
+      length: 20
+      // bestLinkId: 0,
+      // links: [],
+    });
+    this.problem.keywords.push({
+      id: 2,
+      start: 60,
+      length: 4
+      // bestLinkId: 0,
+      // links: [],
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
