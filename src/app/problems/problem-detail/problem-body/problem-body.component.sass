@@ -3,6 +3,7 @@
 \:host
   display: block
   margin-top: 18px
+  //position: relative
 
 .problem-body
   outline: none
@@ -13,8 +14,7 @@
   &.active
     visibility: visible
   white-space: nowrap
-  position: absolute
-  float: left
+  position: fixed
   z-index: 10
   width: 330px
   height: 40px
@@ -44,3 +44,9 @@
   padding: 0 20px
   font-size: 16px
   background-color : transparent
+
+a
+  color: rgb(0, 112, 201)
+  font-weight: bold
+.selected
+  background-color: #B9DBFA

@@ -31,10 +31,12 @@ import {HightlightPipe} from "./problem-detail/problem-body/highlight.pipe";
     ProblemDetailComponent,
     ProblemDetailBreadcrumbComponent,
     ProblemHeaderComponent,
-    ProblemBodyComponent,
-    HightlightPipe
+    ProblemBodyComponent
   ],
-  providers: [ProblemService]
+  providers: [
+    ProblemService,
+    {provide: HightlightPipe, useClass: HightlightPipe}
+    ]
 })
 export class ProblemsModule {
 }

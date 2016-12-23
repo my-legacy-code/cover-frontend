@@ -1,6 +1,6 @@
 <div class="problem-body"
      (mouseup)="getLocation($event)"
-     [innerHTML]="problem | highlight">
+     [innerHTML]="body">
 </div>
 <div id="submit-link-popup"
      class="submit-link-popup"
@@ -9,5 +9,7 @@
   <input id="link-field"
          class="link-field"
          placeholder="Enter to submit link, ese to cancel"
-         (keydown)="onKeydown($event)">
+         (keydown)="onKeydown($event)"
+  (blur)="console.log('Cancel')"
+  onfocus="console.log('Focus')">
 </div>

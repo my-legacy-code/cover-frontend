@@ -7,6 +7,7 @@ export interface Keyword {
   id: number;
   start: number;
   length: number;
+  selected?: boolean;
   //bestLinkId: Link;
   //links: Link[];
 }
