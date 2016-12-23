@@ -53,15 +53,22 @@ export class ProblemBodyComponent implements OnInit {
 
   getLocation() {
     let selection = document.getSelection();
+    console.log(selection.rangeCount);
+
+    // maybe it's always 1
     if(selection.rangeCount) {
       let range = selection.getRangeAt(0);
       this.container = range.startContainer;
+      console.log(this.container);
       this.startOffset = range.startOffset;
       this.endOffset = range.endOffset;
       if(range.endOffset - range.startOffset > 0) {
+
+        //this.problem.keywords.push();
+
         this.editing = true;
         let rect = range.getBoundingClientRect();
-        this.highlight();
+//        this.highlight();
         // Setup popup window
         let popup = this.el.nativeElement.querySelector('#submit-link-popup');
         this.popupLeft = rect.left + (rect.width - popup.clientWidth) / 2 + window.pageXOffset;
@@ -73,10 +80,10 @@ export class ProblemBodyComponent implements OnInit {
     }
   }
 
-  private highlight() {
-    document.execCommand('styleWithCSS', false, true);
-    document.execCommand('hilitecolor', false, "rgba(185,219,250,1)");
-  }
+  // private highlight() {
+  //   document.execCommand('styleWithCSS', false, true);
+  //   document.execCommand('hilitecolor', false, "rgba(185,219,250,1)");
+  // }
 
   private getKeywords() {
     return this.keywords;
@@ -95,5 +102,18 @@ export class ProblemBodyComponent implements OnInit {
       // selection.removeAllRanges();
       // selection.addRange(range);
       // document.execCommand('hilitecolor', false, "rgba(0,0,0,1)");
+  }
+
+  onKeydown(event: KeyboardEvent) {
+    switch(event.key) {
+      case "Enter":
+        console.log(event.key);
+        //submitLink();
+        break;
+      case "Escape":
+        console.log(event.key);
+        //cancel();
+        break;
+    }
   }
 }
