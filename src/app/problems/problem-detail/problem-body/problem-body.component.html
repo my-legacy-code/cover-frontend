@@ -1,0 +1,5 @@
+<div class="problem-body" (mouseup)="getLocation($event)" contenteditable="true">{{problem.body}}</div>
+<div id="submit-link-popup" class="submit-link-popup" [ngClass]="{'active': editing}" [ngStyle]="{'top.px': popupTop, 'left.px': popupLeft}">
+  <input id="link-field" class="link-field" placeholder="Enter to submit link, ese to cancel"
+         (keydown.enter)="submitLink($event)">
+</div>

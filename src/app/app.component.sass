@@ -1,0 +1,53 @@
+// import shared styles
+@import "../shared/colors"
+@import "../shared/easings"
+@import "../shared/shadows"
+@import "../shared/diviers"
+
+span.active
+  background-color : gray
+
+.btn
+  box-shadow : $middle-shadow
+  color : white
+  text-align : center
+  transition : all $ease-out-expo
+  border-radius : 4px
+  &.nero
+    background-color : $nero
+    &:hover
+      cursor : pointer
+      background-color : white
+      color : $nero
+
+footer
+  width : 1024px
+  margin : 26px auto
+  padding-top : 10px
+  font-size : 12px
+  border-top : $divider
+  flex-direction : row
+  display : flex
+  .copyright
+    color : $nobel
+  .links
+    box-sizing : border-box
+    flex : 1
+    margin : 0 20px
+    padding : 0
+    > li
+      display : inline
+      color : $dove-gray
+    .vertical-divider
+      display : inline
+      padding : 0 16px 0 0
+      margin-left : 16px
+      border-left : $divider
+  .country
+    position : relative
+    right : 0
+    display : inline
+    .country-name
+      font-size : 12px
+      vertical-align : top
+      margin-left : 10px

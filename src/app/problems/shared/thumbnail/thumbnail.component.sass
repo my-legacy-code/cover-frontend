@@ -1,0 +1,55 @@
+@import "../../../../shared/colors"
+@import "../../../../shared/shadows"
+@import "../../../../shared/easings"
+\:host
+  padding: 13px 40px
+  background-color: white
+  box-shadow: $middle-shadow
+  display: flex
+  border-radius: 2px
+  transition: all $ease-out-expo
+  &:hover
+    background-color: $amaranth
+    cursor: pointer
+    .location
+      color: white
+    .description
+      color: white
+    .due-date
+      color: white
+    .due-icon
+      background-image: url("/assets/img/icons/ic-due-white.svg")
+
+.info
+  flex: 1
+.location
+  transition: all $ease-out-expo
+  color: $amaranth
+  font-size: 20px
+  font-weight: 600
+.description
+  color: gray
+  font-size: 14px
+  max-width: 560px
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+.due
+  padding-top: 13px
+  height: 30px
+.due-icon
+  transition: all $ease-out-expo
+  display: inline-block
+  vertical-align: top
+  margin-right: 12px
+  width: 20px
+  height: 20px
+  background-image: url("/assets/img/icons/ic-due.svg")
+  background-position: center
+  background-repeat: no-repeat
+  background-size: contain
+.due-date
+  transition: all $ease-out-expo
+  display: inline-block
+  vertical-align: top
+  color: gray

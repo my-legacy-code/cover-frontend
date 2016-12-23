@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let problem of problems | async" (click)="setCurrentProblem(problem)">
+    <a>
+      <app-thumbnail [problem]="problem" routerLink="/problems/{{problem.id}}"></app-thumbnail>
+    </a>
+  </li>
+</ul>

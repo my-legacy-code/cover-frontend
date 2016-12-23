@@ -1,0 +1,8 @@
+<span class="info">
+  <div class="location">{{problem.school}} > {{problem.course}} > {{problem.term | term }}{{problem.year}} > {{problem.title}}</div>
+  <div class="description">{{problem.description}}</div>
+  </span>
+<span class="due">
+  <div class="due-icon"></div>
+  <span class="due-date">Due {{problem.dueDate | fromNow}}</span>
+</span>

@@ -1,0 +1,42 @@
+@import ../../app.component
+nav
+  position : fixed
+  left : 0
+  right : 0
+  top : 0
+  z-index : 1000
+  padding : 18px 50px
+  background-color : $nero
+  box-shadow : $strong-shadow
+
+#content
+  background : url("assets/img/workshop-1680x1050.png") no-repeat center
+  background-size : cover
+
+.logo-name
+  margin-left : 20px
+  color : white
+  font-size : 22px
+  font-family: 'Roboto', sans-serif
+
+.signup-signin
+  margin : 2px 0 0 0
+  float : right
+  > li
+    font-size : 20px
+    display : inline
+    color : white
+    &:not(:last-child)
+      margin-right : 40px
+
+$btn-try-now-width : 300px
+.btn.try-now
+  position : absolute
+  bottom : 144px
+  left : 50%
+  margin-left : -$btn-try-now-width / 2
+  z-index : 900
+  padding : 14px 0
+  width : $btn-try-now-width
+  font-size : 26px
+  border : none

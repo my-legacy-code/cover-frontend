@@ -1,0 +1,9 @@
+<img class="author-avatar" src="{{problem.author.email | avatar}}">
+<span class="name-date">
+  <div class="author-name">
+    {{problem.author.name}}, {{problem.author.school}} class of {{problem.author.classOfGraduation}}
+  </div>
+  <div class="posted-date">
+    {{ problem.postedDate | date }}
+  </div>
+</span>
