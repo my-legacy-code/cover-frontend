@@ -1,6 +1,5 @@
 import {
-  Component, OnInit, Input, HostListener, ElementRef, ChangeDetectorRef, ViewEncapsulation,
-  AfterContentChecked
+  Component, OnInit, Input, ElementRef, ChangeDetectorRef, ViewEncapsulation, AfterViewChecked, HostListener
 } from '@angular/core';
 import {HightlightPipe} from "./highlight.pipe";
 import {SafeHtml} from "@angular/platform-browser";
@@ -11,11 +10,11 @@ import {SafeHtml} from "@angular/platform-browser";
   styleUrls: ['./problem-body.component.sass'],
   encapsulation: ViewEncapsulation.Native
 })
-export class ProblemBodyComponent implements OnInit{
+export class ProblemBodyComponent implements OnInit, AfterViewChecked{
   @Input() problem;
   popupTop: number;
   popupLeft: number;
-  editing: boolean;
+  selected: boolean;
   body: SafeHtml;
   shadowRoot;
 
@@ -47,18 +46,24 @@ export class ProblemBodyComponent implements OnInit{
       // links: [],
     });
 
+    this.selected = false;
     this.updateBody();
-
 
     this.shadowRoot = this.el.nativeElement.shadowRoot;
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    this.getLocation();
+
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked', this.selected)
   }
 
+// @HostListener('window:scroll', ['$event'])
+  // onWindowScroll() {
+  //   this.getLocation();
+  // }
+
   getLocation() {
+    console.log("getLocation start");
     // this.cancel();
     let selection = this.shadowRoot.getSelection();
 
@@ -75,16 +80,12 @@ export class ProblemBodyComponent implements OnInit{
           selected: true
         };
 
-        this.editing = true;
+        this.selected = true;
         this.problem.keywords.push(keyword);
         this.updateBody();
         let rect = range.getBoundingClientRect();
         // Setup popup window
         this.updatePopupPosition(rect);
-        let linkField = this.shadowRoot.querySelector('#link-field');
-        console.log('before focus');
-        linkField.focus();
-        console.log('after focus');
       }
     }
   }
@@ -93,7 +94,6 @@ export class ProblemBodyComponent implements OnInit{
     let popup = this.shadowRoot.querySelector('#submit-link-popup');
     this.popupLeft = rect.left - this.shadowRoot.host.clientLeft + (rect.width - popup.clientWidth) / 2;
     this.popupTop = rect.top - this.shadowRoot.host.clientTop - popup.clientHeight;
-
   }
 
   private getStart(range: Range): number {
@@ -108,13 +108,8 @@ export class ProblemBodyComponent implements OnInit{
     return range.startOffset;
   }
 
-  // private highlight() {
-  //   document.execCommand('styleWithCSS', false, true);
-  //   document.execCommand('hilitecolor', false, "rgba(185,219,250,1)");
-  // }
-
   submitLink() {
-    this.editing = false;
+    this.selected = false;
       // let selection = document.getSelection();
       // selection.removeAllRanges();
       // selection.addRange(range);
@@ -126,7 +121,7 @@ export class ProblemBodyComponent implements OnInit{
   }
 
   cancel() {
-    this.editing = false;
+    this.selected = false;
     this.problem.keywords = this.problem.keywords.filter(keyword=> !keyword.selected);
     this.updateBody();
   }
@@ -140,6 +135,23 @@ export class ProblemBodyComponent implements OnInit{
       case "Escape":
         console.log(event.key);
         this.cancel();
+        break;
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  onWindowKeypress(event) {
+    console.log(event);
+    switch(event.key) {
+      case "Escape":
+        console.log(event.key);
+        this.cancel();
+        break;
+      default:
+        if(this.selected) {
+          let linkField = this.shadowRoot.querySelector('#link-field');
+          linkField.focus();
+        }
         break;
     }
   }

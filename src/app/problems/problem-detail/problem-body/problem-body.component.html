@@ -5,13 +5,10 @@
 </div>
 <div id="submit-link-popup"
      class="submit-link-popup"
-     [ngClass]="{'active': editing}"
+     [ngClass]="{'active': selected}"
      [ngStyle]="{'top.px': popupTop, 'left.px': popupLeft}">
   <input id="link-field"
          class="link-field"
-         placeholder="Enter to submit link, ese to cancel"
-         (keydown)="onKeydown($event)"
-         onfocus='console.log("onfocuse")'
-         (blur)="console.log('Cancel')"
-  onfocus="console.log('Focus')">
+         placeholder="Enter to submit link, Esc to cancel"
+         (keydown)="onKeydown($event)">
 </div>
