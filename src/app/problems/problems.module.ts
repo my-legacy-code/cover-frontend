@@ -14,6 +14,7 @@ import { ProblemDetailBreadcrumbComponent } from './problem-detail/problem-detai
 import { ProblemHeaderComponent } from './problem-detail/problem-header/problem-header.component';
 import { ProblemBodyComponent } from './problem-detail/problem-body/problem-body.component';
 import {HightlightPipe} from "./problem-detail/problem-body/highlight.pipe";
+import {KeywordComponent} from './problem-detail/keyword/keyword.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import {HightlightPipe} from "./problem-detail/problem-body/highlight.pipe";
     ProblemDetailComponent,
     ProblemDetailBreadcrumbComponent,
     ProblemHeaderComponent,
-    ProblemBodyComponent
+    ProblemBodyComponent,
+    KeywordComponent
   ],
   providers: [
     ProblemService,

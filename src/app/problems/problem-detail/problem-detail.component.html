@@ -5,6 +5,7 @@
     <app-problem-body [problem]="problem"></app-problem-body>
   </div>
   <ul class="keywords">
-    <!--<keyword *ngFor="let keyword of problem.keywords" [keyword]="keyword" (upvote)="onUpvote($event)" (downvote)="onDownvote($event)"></keyword>-->
+    <app-keyword *ngFor="let kw of getValidKeywords()" [keyword]="kw">
+    </app-keyword>
   </ul>
 </div>

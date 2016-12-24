@@ -3,6 +3,7 @@ import {Params, ActivatedRoute} from "@angular/router";
 import {ProblemService} from "../shared/problem.service";
 import {Observable, Subject} from "rxjs";
 import {Problem} from "../shared/problem.model";
+import {Keyword} from "../../shared/Keyword";
 
 @Component({
   selector: 'app-problem-detail',
@@ -23,5 +24,9 @@ export class ProblemDetailComponent implements OnInit {
     this.route
       .params
       .subscribe((params: Params)=> this.problemService.setCurrentProblem(+params['id']))
+  }
+
+  getValidKeywords(): Keyword[] {
+    return this.problem.keywords.filter(function(v) { return v.id !== -1 });
   }
 }
