@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Subject, Observable, BehaviorSubject} from "rxjs";
+import {Subject, Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {Http, Response} from "@angular/http";
 import {Problem} from "./problem.model";
@@ -32,17 +32,20 @@ export class ProblemService {
     this.index
       .flatMap((requestUrl) => this.http.get(requestUrl))
       .map(this.extractData)
-      .map(function(newProblems): IProblemsOperation {
-          return newProblems.map(function (p: Problem){
-            return Object.assign({}, p);
-          });
-      })
+      .map((newProblems): IProblemsOperation =>
+        (problems: Problem[]) => newProblems)
       .subscribe(this.operations);
-
 
     this.currentProblem = this.show
       .flatMap((requestUrl) => this.http.get(requestUrl))
       .map(this.extractData)
+      .map((p) =>
+        Object.assign({}, p, {
+          keywords: p.keywords.map((k: Keyword) => Object.assign({}, k, {
+            content: p.body.substr(k.start, k.length)
+          }))
+        })
+      )
       .publishReplay(1)
       .refCount();
   }

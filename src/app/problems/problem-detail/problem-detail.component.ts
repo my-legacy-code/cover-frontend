@@ -19,7 +19,10 @@ export class ProblemDetailComponent implements OnInit {
   ngOnInit() {
     this.problemService
       .currentProblem
-      .subscribe((problem)=>this.problem = problem);
+      .subscribe((problem)=>{
+      this.problem = problem;
+        console.log(problem);
+      });
 
     this.route
       .params
