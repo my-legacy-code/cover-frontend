@@ -1,4 +1,5 @@
 <div class="problem-body"
+     (mousedown)
      (mouseup)="getLocation($event)"
      [innerHTML]="body">
 </div>
@@ -10,6 +11,7 @@
          class="link-field"
          placeholder="Enter to submit link, ese to cancel"
          (keydown)="onKeydown($event)"
-  (blur)="console.log('Cancel')"
+         onfocus='console.log("onfocuse")'
+         (blur)="console.log('Cancel')"
   onfocus="console.log('Focus')">
 </div>

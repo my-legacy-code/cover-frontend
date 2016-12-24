@@ -82,7 +82,9 @@ export class ProblemBodyComponent implements OnInit{
         // Setup popup window
         this.updatePopupPosition(rect);
         let linkField = this.shadowRoot.querySelector('#link-field');
+        console.log('before focus');
         linkField.focus();
+        console.log('after focus');
       }
     }
   }
