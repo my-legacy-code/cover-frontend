@@ -10,13 +10,14 @@ import {SafeHtml} from "@angular/platform-browser";
   styleUrls: ['./problem-body.component.sass'],
   encapsulation: ViewEncapsulation.Native
 })
-export class ProblemBodyComponent implements OnInit, AfterViewChecked{
+export class ProblemBodyComponent implements OnInit{
   @Input() problem;
   popupTop: number;
   popupLeft: number;
   selected: boolean;
   body: SafeHtml;
   shadowRoot;
+  link: string;
 
   constructor(private el: ElementRef, private changeDetector: ChangeDetectorRef, private highlightPipe: HightlightPipe) {
 
@@ -52,18 +53,7 @@ export class ProblemBodyComponent implements OnInit, AfterViewChecked{
     this.shadowRoot = this.el.nativeElement.shadowRoot;
   }
 
-
-  ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked', this.selected)
-  }
-
-// @HostListener('window:scroll', ['$event'])
-  // onWindowScroll() {
-  //   this.getLocation();
-  // }
-
   getLocation() {
-    console.log("getLocation start");
     // this.cancel();
     let selection = this.shadowRoot.getSelection();
 
@@ -110,10 +100,6 @@ export class ProblemBodyComponent implements OnInit, AfterViewChecked{
 
   submitLink() {
     this.selected = false;
-      // let selection = document.getSelection();
-      // selection.removeAllRanges();
-      // selection.addRange(range);
-      // document.execCommand('hilitecolor', false, "rgba(0,0,0,1)");
   }
 
   updateBody() {
@@ -122,6 +108,11 @@ export class ProblemBodyComponent implements OnInit, AfterViewChecked{
 
   cancel() {
     this.selected = false;
+    this.link = '';
+    this.deselect();
+  }
+
+  deselect() {
     this.problem.keywords = this.problem.keywords.filter(keyword=> !keyword.selected);
     this.updateBody();
   }
@@ -129,11 +120,9 @@ export class ProblemBodyComponent implements OnInit, AfterViewChecked{
   onKeydown(event: KeyboardEvent) {
     switch(event.key) {
       case "Enter":
-        console.log(event.key);
-        //submitLink();
+        this.submitLink();
         break;
       case "Escape":
-        console.log(event.key);
         this.cancel();
         break;
     }
@@ -144,7 +133,6 @@ export class ProblemBodyComponent implements OnInit, AfterViewChecked{
     console.log(event);
     switch(event.key) {
       case "Escape":
-        console.log(event.key);
         this.cancel();
         break;
       default:

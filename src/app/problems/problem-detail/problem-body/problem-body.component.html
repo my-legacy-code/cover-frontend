@@ -1,6 +1,7 @@
 <div class="problem-body"
      (mouseup)="getLocation($event)"
-     [innerHTML]="body">
+     [innerHTML]="body"
+      (mousedown)="deselect($event)">
 </div>
 <div id="submit-link-popup"
      class="submit-link-popup"
@@ -9,5 +10,6 @@
   <input id="link-field"
          class="link-field"
          placeholder="Enter to submit link, Esc to cancel"
-         (keydown)="onKeydown($event)">
+         (keydown)="onKeydown($event)"
+         [(ngModel)]="link">
 </div>
