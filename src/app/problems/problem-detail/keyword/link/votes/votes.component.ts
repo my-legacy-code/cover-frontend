@@ -8,12 +8,24 @@ import {Vote} from "../../../../../shared/Vote";
 })
 export class VotesComponent implements OnInit {
   voted: boolean;
-  @Input() upvotes: number;
-  @Input() downvotes: number;
+
+  @Input()
+  upvotes: number;
+
+  @Input()
+  downvotes: number;
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
+  onDownvote() {
+    this.downvotes++;
+  }
+
+  onUpvote() {
+    this.upvotes++;
+  }
 }
