@@ -8,7 +8,9 @@ import {Link} from "../../../../shared/Link";
 })
 export class LinkComponent implements OnInit {
 
-  @Input() link: Link;
+  @Input()
+  link: Link;
+
   constructor() { }
 
   ngOnInit() {
