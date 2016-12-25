@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Term} from "../../shared/Term";
+import {Term} from "../../shared/term.enum";
 
 @Pipe({
   name: 'term'

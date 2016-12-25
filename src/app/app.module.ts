@@ -6,12 +6,16 @@ import {AppRoutingModule} from "./app-routing.module";
 import {StaticsModule} from "./statics/statics.module";
 import {ProblemsModule} from "./problems/problems.module";
 import {SharedModule} from "./shared/shared.module";
+import { SchoolComponent } from './schools/school.component';
+import { CourseComponent } from './course/course.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SchoolComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,

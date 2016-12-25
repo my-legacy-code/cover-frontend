@@ -1,5 +1,5 @@
 import {LinkType} from "./LinkType";
-import {User} from "./User";
+import {User} from "./user.model";
 /**
  * Created by harryliu on 12/14/16.
  */

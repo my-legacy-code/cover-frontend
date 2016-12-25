@@ -1,5 +1,5 @@
-import {User} from "../../shared/User";
-import {Term} from "../../shared/Term";
+import {User} from "../../shared/user.model";
+import {Term} from "../../shared/term.enum";
 import {Keyword} from "../../shared/Keyword";
 export interface Problem {
   id: number,
