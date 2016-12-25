@@ -34,3 +34,4 @@ testem.log
 .DS_Store
 Thumbs.db
 npm-debug.log.4040145165
+mock.json
