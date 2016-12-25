@@ -1,5 +1,11 @@
-<span class="location">{{problem.school}} > {{problem.course}} > {{problem.term | term}}{{problem.year}} > {{problem.title}}</span>
-<span class="due">
-  <img class="due-icon" src="/assets/img/icons/ic-due.svg">
-  <span class="due-date">Due {{problem.dueDate | fromNow}}</span>
-</span>
+<div class="header">
+  <span class="nav">{{problem.school}} > {{problem.course}} 【{{problem.term | term}}{{problem.year}}】 >  {{problem.title}}</span>
+
+  <span class="due">
+    <img class="due-icon" src="/assets/img/icons/ic-due.svg">
+    <span class="due-date">Due {{problem.dueDate | fromNow}}</span>
+  </span>
+</div>
+<div>
+
+</div>
