@@ -15,6 +15,8 @@ import { ProblemHeaderComponent } from './problem-detail/problem-header/problem-
 import { ProblemBodyComponent } from './problem-detail/problem-body/problem-body.component';
 import {HightlightPipe} from "./problem-detail/problem-body/highlight.pipe";
 import {KeywordComponent} from './problem-detail/keyword/keyword.component';
+import { LinkComponent } from './problem-detail/keyword/link/link.component';
+import { VotesComponent } from './problem-detail/keyword/link/votes/votes.component';
 
 @NgModule({
   imports: [
@@ -33,7 +35,9 @@ import {KeywordComponent} from './problem-detail/keyword/keyword.component';
     ProblemDetailBreadcrumbComponent,
     ProblemHeaderComponent,
     ProblemBodyComponent,
-    KeywordComponent
+    KeywordComponent,
+    LinkComponent,
+    VotesComponent
   ],
   providers: [
     ProblemService,

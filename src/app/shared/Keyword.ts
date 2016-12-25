@@ -9,6 +9,6 @@ export interface Keyword {
   length: number;
   selected?: boolean;
   content: string;
-  //bestLinkId: Link;
-  //links: Link[];
+  bestLinkId: Link;
+  links: Link[];
 }

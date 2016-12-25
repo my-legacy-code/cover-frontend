@@ -1,3 +1,4 @@
 <h1>{{getKeywordTitle()}}</h1>
+<app-link *ngFor="let link of keyword.links" [link]="link"></app-link>
 <!--<problem-link *ngFor="let link of sortedLinks()" [link]="link" [ngClass]="link.type | linkType" (upvote)="onUpvote($event)"-->
               <!--(downvote)="onDownvote($event)"></problem-link>-->
