@@ -2,14 +2,14 @@
  * Created by harryliu on 12/14/16.
  */
 export enum LinkType {
+  site,
   wiki,
-  picture,
-  location,
   video,
+  location,
+  picture,
   audio,
   definition,
   codesnippet,
   book,
-  store,
-  site
+  store
 }

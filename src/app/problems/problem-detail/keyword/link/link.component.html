@@ -3,10 +3,10 @@
   <div class="link-title">{{link.title}}</div>
   <div class="link-link"><a>{{link.link}}</a></div>
 </span>
-  <!--<img class="user-avatar" [src]="link.contributor.email | avatar">-->
+  <img class="user-avatar" [src]="link.contributor.email | avatar">
 </div>
 <div class="link-icon">
-  <!--<img [src]="link.type | linkType | linkicon">-->
+  <img [src]="link.type | linktype | linkicon">
 </div>
 <app-votes
   [ngClass]="{voted: voted}"

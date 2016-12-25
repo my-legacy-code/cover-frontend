@@ -17,6 +17,8 @@ import {HightlightPipe} from "./problem-detail/problem-body/highlight.pipe";
 import {KeywordComponent} from './problem-detail/keyword/keyword.component';
 import { LinkComponent } from './problem-detail/keyword/link/link.component';
 import { VotesComponent } from './problem-detail/keyword/link/votes/votes.component';
+import { LinktypePipe } from './problem-detail/keyword/link/linktype.pipe';
+import { LinkiconPipe } from './problem-detail/keyword/link/linkicon.pipe';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { VotesComponent } from './problem-detail/keyword/link/votes/votes.compon
     ProblemBodyComponent,
     KeywordComponent,
     LinkComponent,
-    VotesComponent
+    VotesComponent,
+    LinktypePipe,
+    LinkiconPipe
   ],
   providers: [
     ProblemService,
