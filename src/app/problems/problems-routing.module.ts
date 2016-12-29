@@ -8,7 +8,7 @@ import {ProblemDetailComponent} from "./problem-detail/problem-detail.component"
  */
 const problemsRoutes: Routes = [
   {
-    path: 'problems',
+    path: 'schools/:school_id/courses/:course_id/problems',
     component: ProblemsComponent,
     children: [
       {path: '', component: ProblemListComponent},
@@ -18,7 +18,7 @@ const problemsRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(problemsRoutes)
+    RouterModule.forChild(problemsRoutes)
   ],
   exports: [
     RouterModule

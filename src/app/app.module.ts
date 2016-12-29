@@ -6,16 +6,14 @@ import {AppRoutingModule} from "./app-routing.module";
 import {StaticsModule} from "./statics/statics.module";
 import {ProblemsModule} from "./problems/problems.module";
 import {SharedModule} from "./shared/shared.module";
-import { SchoolComponent } from './schools/school.component';
-import { CourseComponent } from './course/course.component';
+import {SchoolsModule} from "./schools/schools.module";
+import {CoursesModule} from "./courses/courses.module";
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SchoolComponent,
-    CourseComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,10 +21,12 @@ import { CourseComponent } from './course/course.component';
     SharedModule,
     AppRoutingModule,
     StaticsModule,
-    ProblemsModule
+    ProblemsModule,
+    SchoolsModule,
+    CoursesModule
   ],
   providers: [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

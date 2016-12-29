@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Vote} from "../../../../../shared/Vote";
 
 enum State {
   upVoted,
