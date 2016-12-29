@@ -1,0 +1,18 @@
+<!--<div class="header">-->
+  <ul class="nav">
+    <li *ngFor="let navlocation of navLocations; let i = index">
+      <a [routerLink]="navlocation.route">{{navlocation.title}}</a>
+      <span *ngIf="i < navLocations.length - 1">&gt;</span>
+    </li>
+  </ul>
+
+  <!--<span class="due">-->
+    <!--<img class="due-icon" src="/assets/img/icons/ic-due.svg">-->
+    <!--<span class="due-date">Due {{problem.dueDate | fromNow}}</span>-->
+  <!--</span>-->
+<!--</div>-->
+<!--<ul class="tags">-->
+  <!--<li>CS4241</li>-->
+  <!--<li>B16</li>-->
+  <!--<li>Prof. Lane Harrison</li>-->
+<!--</ul>-->

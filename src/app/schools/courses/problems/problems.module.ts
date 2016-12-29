@@ -8,7 +8,6 @@ import {ProblemService} from "./shared/problem.service";
 import {HttpModule} from "@angular/http";
 import { TermPipe } from './shared/term.pipe';
 import { ProblemDetailComponent } from './problem-detail/problem-detail.component';
-import { ProblemDetailBreadcrumbComponent } from './problem-detail/problem-detail-breadcrumb/problem-detail-breadcrumb.component';
 import { ProblemHeaderComponent } from './problem-detail/problem-header/problem-header.component';
 import { ProblemBodyComponent } from './problem-detail/problem-body/problem-body.component';
 import {HightlightPipe} from "./problem-detail/problem-body/highlight.pipe";
@@ -32,7 +31,6 @@ import {SharedModule} from "../../../shared/shared.module";
     ThumbnailComponent,
     TermPipe,
     ProblemDetailComponent,
-    ProblemDetailBreadcrumbComponent,
     ProblemHeaderComponent,
     ProblemBodyComponent,
     KeywordComponent,

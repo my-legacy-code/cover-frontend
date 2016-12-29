@@ -1,70 +1,125 @@
 @import "../../../shared/colors"
 @import "../../../shared/shadows"
 \:host
-  position: relative
   background-color: white
-  padding: 12px 0
-  display: flex
+  padding: 10px 0
+  display: block
   box-shadow: $middle-shadow
-.logo
-  flex: 1
-  &:hover
-    cursor: pointer
 .center
   width: 1024px
-  position: relative
   margin-left: auto
   margin-right: auto
-.search-input
+  display: flex
+  flex-direction: row
+//.logo
+//  &:hover
+//    cursor: pointer
+//.center
+//  width: 1024px
+//  position: relative
+//  margin-left: auto
+//  margin-right: auto
+//.search-input
+//  position: relative
+//  box-sizing: border-box
+//  width: 100%
+//  margin: 0
+//  font-size: 18px
+//  padding: 4px 22px 4px 0
+//  color: gray
+//  outline: none
+//  border-top: none
+//  border-left: none
+//  border-right: none
+//  border-bottom: 2px solid grey
+//.search-btn
+//  top: 50%
+//  right: 0
+//  margin-top: -9px
+//  position: absolute
+//  background-image: url('/assets/img/icons/ic-search.svg')
+//  width: 18px
+//  height: 18px
+//  background-position: center
+//  background-repeat: no-repeat
+//  background-size: contain
+//  &:hover
+//    cursor: pointer
+//.user-info
+//  padding: 2px 0 0 0
+//  flex: 1
+//  height: 30px
+.search-box
+  margin: 0 30px
   position: relative
-  box-sizing: border-box
-  width: 100%
-  margin: 0
-  font-size: 18px
-  padding: 4px 22px 4px 0
-  color: gray
-  outline: none
-  border-top: none
-  border-left: none
-  border-right: none
-  border-bottom: 2px solid grey
-.search-btn
-  top: 50%
-  right: 0
-  margin-top: -9px
-  position: absolute
-  background-image: url('/assets/img/icons/ic-search.svg')
-  width: 18px
-  height: 18px
-  background-position: center
-  background-repeat: no-repeat
-  background-size: contain
-  &:hover
-    cursor: pointer
-.user-info
-  padding: 2px 0 0 0
-  flex: 1
-  height: 30px
+  .search-input
+    box-sizing: border-box
+    width: 100%
+    margin: 0
+    font-size: 18px
+    padding: 6px 22px 6px 0
+    color: gray
+    outline: none
+    border-top: none
+    border-left: none
+    border-right: none
+    border-bottom: 2px solid grey
+  .search-btn
+    top: 50%
+    right: 0
+    margin-top: -9px
+    position: absolute
+    background-image: url('/assets/img/icons/ic-search.svg')
+    width: 18px
+    height: 18px
+    background-position: center
+    background-repeat: no-repeat
+    background-size: contain
+    &:hover
+      cursor: pointer
 .avatar
-  display: inline-block
-  vertical-align: middle
-  margin-left: 50px
-.user-name
-  margin-left: 20px
-  font-size: 20px
-  color: grey
-  display : inline-block
-  vertical-align: middle
-.logo-info
-  flex: 1
-  position: relative
-  text-align: right
+  width: 36px
+  height: 36px
+  border-radius: 4px
+  margin-right: 16px
+//.user-name
+//  margin-left: 20px
+//  font-size: 20px
+//  color: grey
+//  display : inline-block
+//  vertical-align: middle
+//.logo-info
+//  flex: 1
+//  position: relative
+//  text-align: right
 .logo
-  position: absolute
-  right: 50px
   width: 30px
   height: 30px
   background-position: center
   background-repeat: no-repeat
   background-size: contain
   background-image: url('/assets/img/logo-grey.svg')
+.search-box
+  flex: 1
+.new-buttons
+  display: flex
+  flex-direction: row
+  margin: 0
+  list-style: none
+  padding: 0
+.new-button
+  &:not(:last-child)
+    margin-right: 16px
+  flex: 1
+  padding: 6px 20px
+  font-size: 18px
+  color: white
+  border-radius: 4px
+  &:hover
+    opacity: 0.8
+    cursor: pointer
+.new-course-button
+  background-color: $barney
+.new-problem-button
+  background-color: $lipstick
+

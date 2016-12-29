@@ -1,16 +1,17 @@
-<div class="logo-info">
-  <div class="logo" routerLink=""></div>
-</div>
 <div class="center">
-  <input class="search-input">
-  <div class="search-btn"></div>
+  <div class="logo" routerLink="/"></div>
+  <div class="search-box">
+    <input class="search-input" placeholder="School / course / problem / keyword">
+    <div class="search-btn"></div>
+  </div>
+  <img class="avatar" [src]="'byliuyang11@gmail.com' | avatar">
+  <ul class="new-buttons">
+    <li class="new-button new-course-button" title="Create a new course">
+      New button
+    </li>
+    <li class="new-button new-problem-button" title="Post a new problem">
+      New button
+    </li>
+  </ul>
 </div>
-<div class="user-info">
-  <img class="avatar" src="/assets/img/icons/avatar.svg">
-</div>
-<div class="new-button new-course-button">
-  new button
-</div>
-<div class="new-button new-problem-button">
-  new button
-</div>
+
