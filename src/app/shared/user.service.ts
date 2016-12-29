@@ -19,11 +19,19 @@ export class UserService {
 
   }
 
-  modify() {
+  signOut(user: User) {
 
   }
 
-  deleteAccount() {
+  modify(user: User) {
+
+  }
+
+  deleteAccount(user: User) {
+
+  }
+
+  getUser() {
 
   }
 }

@@ -7,4 +7,5 @@ export interface User {
   password?: string;
   school?: string;
   classOfGraduation?: number;
+  id: string;
 }
