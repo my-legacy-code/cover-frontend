@@ -10,7 +10,7 @@ import {ProblemsComponent} from "../problems/problems.component";
     CoursesComponent
   ],
   imports: [
-    CoursesRoutingModule
+    // CoursesRoutingModule
   ],
 })
 export class CoursesModule { }

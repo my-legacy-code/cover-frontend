@@ -23,7 +23,7 @@ import { LinkiconPipe } from './problem-detail/keyword/link/linkicon.pipe';
 @NgModule({
   imports: [
     CommonModule,
-    ProblemsRoutingModule,
+    // ProblemsRoutingModule,
     HttpModule,
     SharedModule
   ],
