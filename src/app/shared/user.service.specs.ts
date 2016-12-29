@@ -50,7 +50,7 @@ describe('UserService', () => {
 
   it('modifies up user 0', async(inject(
     [UserService, MockBackend],
-    function(service: UserService, backendL: MockBackend) {
+    function(service: UserService, backend: MockBackend) {
 
       service
         .modify({
