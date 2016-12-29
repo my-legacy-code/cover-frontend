@@ -13,7 +13,11 @@ import {Keyword} from "../../../../shared/Keyword";
 export class ProblemDetailComponent implements OnInit {
 
   problem: Problem;
-  constructor(private problemService: ProblemService, private route: ActivatedRoute) {
+  a: ProblemService;
+  // switched order
+  constructor(private route: ActivatedRoute, private problemService: ProblemService) {
+    this.a = problemService;
+    console.log(this.a);
   }
 
   ngOnInit() {
@@ -27,6 +31,8 @@ export class ProblemDetailComponent implements OnInit {
     this.route
       .params
       .subscribe((params: Params)=> this.problemService.setCurrentProblem(+params['id']))
+
+    console.log(this.problemService === this.a)
   }
 
   getValidKeywords(): Keyword[] {
