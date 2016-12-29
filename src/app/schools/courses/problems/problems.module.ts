@@ -18,7 +18,6 @@ import { VotesComponent } from './problem-detail/keyword/link/votes/votes.compon
 import { LinktypePipe } from './problem-detail/keyword/link/linktype.pipe';
 import { LinkiconPipe } from './problem-detail/keyword/link/linkicon.pipe';
 import {SharedModule} from "../../../shared/shared.module";
-import {NavComponent} from "../../../shared/nav/nav.component";
 
 @NgModule({
   imports: [
@@ -29,7 +28,6 @@ import {NavComponent} from "../../../shared/nav/nav.component";
   ],
   declarations: [
     ProblemsComponent,
-    NavComponent,
     ProblemListComponent,
     ThumbnailComponent,
     TermPipe,

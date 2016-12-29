@@ -5,16 +5,19 @@ import {NgModule} from "@angular/core";
 import {FromNowPipe} from "./from-now.pipe";
 import { AvatarPipe } from './avatar.pipe';
 import {FormsModule} from "@angular/forms";
+import {NavComponent} from "./nav/nav.component";
 @NgModule({
   imports: [FormsModule],
   declarations: [
     FromNowPipe,
-    AvatarPipe
+    AvatarPipe,
+    NavComponent,
   ],
   exports: [
     FromNowPipe,
     AvatarPipe,
-    FormsModule
+    FormsModule,
+    NavComponent
   ]
 })
 export class SharedModule {}
