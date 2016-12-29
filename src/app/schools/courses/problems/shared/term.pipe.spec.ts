@@ -2,7 +2,7 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { TermPipe } from './term.pipe';
-import {Term} from "../../shared/term.enum";
+import {Term} from "../../../../shared/term.enum";
 
 describe('TermPipe', () => {
   it('should translate enum to term string', () => {

@@ -4,8 +4,8 @@ import {TestBed, inject, async} from '@angular/core/testing';
 import { ProblemService } from './problem.service';
 import {Http, ConnectionBackend, RequestOptions, BaseRequestOptions, Response} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
-import {environment} from "../../../environments/environment";
 import {mockProblems} from "./problem.mock";
+import {environment} from "../../../../../environments/environment";
 
 describe('ProblemService', () => {
   beforeEach(() => {
