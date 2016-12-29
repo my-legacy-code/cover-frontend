@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {ProblemsComponent} from "./problems.component";
-import { NavComponent } from './shared/nav/nav.component';
+import { NavComponent } from '../nav/nav.component';
 import {ProblemsRoutingModule} from "./problems-routing.module";
 import { ProblemListComponent } from './problem-list/problem-list.component';
 import { ThumbnailComponent } from './shared/thumbnail/thumbnail.component';
