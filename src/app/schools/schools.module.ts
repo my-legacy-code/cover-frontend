@@ -3,7 +3,8 @@
  */
 import { NgModule } from '@angular/core';
 import {SchoolsRoutingModule} from "./schools-routing.module";
-import {SchoolsComponent} from "./schools.component";
+import {SchoolsComponent} from "./schools-list.component";
+import {CoursesModule} from "./courses/courses.module";
 
 
 
@@ -12,7 +13,8 @@ import {SchoolsComponent} from "./schools.component";
     SchoolsComponent
   ],
   imports: [
-    SchoolsRoutingModule
+    SchoolsRoutingModule,
+    CoursesModule
   ],
 })
 export class SchoolsModule { }

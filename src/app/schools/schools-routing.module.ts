@@ -3,12 +3,15 @@
  */
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {SchoolsComponent} from "./schools.component";
+import {SchoolsComponent} from "./schools-list.component";
+import {CourseListComponent} from "./courses/course-list/course-list.component";
 /**
  * Created by harryliu on 12/18/16.
  */
 const schoolRoutes: Routes = [
-  {path: 'schools', component: SchoolsComponent}
+  {path: 'schools',children: [
+    {path: ':id', component: CourseListComponent}
+  ]}
 ];
 
 @NgModule({

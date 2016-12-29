@@ -4,10 +4,10 @@ import { AppComponent } from './app.component';
 import {CoreModule} from "./core/core.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {StaticsModule} from "./statics/statics.module";
-import {ProblemsModule} from "./problems/problems.module";
+import {ProblemsModule} from "./schools/courses/problems/problems.module";
 import {SharedModule} from "./shared/shared.module";
 import {SchoolsModule} from "./schools/schools.module";
-import {CoursesModule} from "./courses/courses.module";
+import {CoursesModule} from "./schools/courses/courses.module";
 
 
 
