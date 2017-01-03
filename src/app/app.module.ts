@@ -8,6 +8,9 @@ import {ProblemsModule} from "./schools/courses/problems/problems.module";
 import {SharedModule} from "./shared/shared.module";
 import {SchoolsModule} from "./schools/schools.module";
 import {CoursesModule} from "./schools/courses/courses.module";
+import {SchoolService} from "./schools/shared/school.service";
+import {ProblemService} from "./schools/courses/problems/shared/problem.service";
+import {CourseService} from "./schools/courses/shared/course.service";
 
 
 
@@ -26,6 +29,9 @@ import {CoursesModule} from "./schools/courses/courses.module";
     CoursesModule
   ],
   providers: [
+    SchoolService,
+    ProblemService,
+    CourseService
   ],
   bootstrap: [AppComponent]
 })

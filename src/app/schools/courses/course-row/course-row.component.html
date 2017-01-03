@@ -1,0 +1,9 @@
+<div class="course-info">
+  <div class="course-title">
+    {{course.title}}
+  </div>
+  <app-tags [tags]="[course.courseNumber, course.term | termYear: course.year, course.instructor]"></app-tags>
+</div>
+<div class="problem-count">
+  {{course.problemCount}}&nbsp;Problems
+</div>

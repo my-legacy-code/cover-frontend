@@ -1,5 +1,5 @@
 import {
-  Component, OnInit, Input, ElementRef, ChangeDetectorRef, ViewEncapsulation, AfterViewChecked, HostListener
+  Component, OnInit, Input, ElementRef, ViewEncapsulation, HostListener
 } from '@angular/core';
 import {HightlightPipe} from "./highlight.pipe";
 import {SafeHtml} from "@angular/platform-browser";
@@ -19,7 +19,7 @@ export class ProblemBodyComponent implements OnInit{
   shadowRoot;
   link: string;
 
-  constructor(private el: ElementRef, private changeDetector: ChangeDetectorRef, private highlightPipe: HightlightPipe) {
+  constructor(private el: ElementRef, private highlightPipe: HightlightPipe) {
 
   }
 
@@ -107,7 +107,6 @@ export class ProblemBodyComponent implements OnInit{
 
   @HostListener('window:keydown', ['$event'])
   onWindowKeypress(event) {
-    console.log(event);
     switch(event.key) {
       case "Escape":
         this.cancel();

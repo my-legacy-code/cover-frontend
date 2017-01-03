@@ -1,0 +1,42 @@
+@import "../../../shared/colors"
+@import "../../../shared/easings"
+
+\:host
+  display : block
+
+\:host-context(.dove-gray)
+  .tags
+    >li
+      border: 1px solid $dove-gray
+      color: $dove-gray
+      &:hover
+        background-color: $dove-gray
+        color: white
+
+\:host-context(.blue-gray)
+  .tags
+    >li
+      border: 1px solid $blue-gray
+      color: $blue-gray
+      &:hover
+        background-color: $blue-gray
+        color: white
+
+
+.tags
+  list-style: none
+  padding: 0
+  margin: 0
+  font-size: 0
+  >li
+    display: inline-block
+    padding: 2px 8px
+    border-radius: 11.5px
+    font-size: 13px
+    font-weight: 600
+    transition: background-color $ease-out-expo, color $ease-out-expo
+    &:not(:first-child)
+      margin-left: 10px
+    &:hover
+      color: white
+      cursor: pointer

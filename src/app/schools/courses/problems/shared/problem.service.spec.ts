@@ -18,11 +18,14 @@ describe('ProblemService', () => {
     });
   });
 
-  it('updates problems list', async(inject([ProblemService, MockBackend],
+  it('should get problems list', async(inject([ProblemService, MockBackend],
     (service: ProblemService, backend: MockBackend) => {
       backend.connections.subscribe(c => {
         expect(c.request.method).toEqual(RequestMethod.Get);
-        expect(c.request.url).toEqual(`${environment.apiEndpoint}/problems`);
+        expect(c.request.url).toEqual(`${environment.apiEndpoint}
+        /schools/3f456176-62fa-4f53-929e-1652d29770fb
+        /courses/1be5da90-d14e-4853-ba6f-2a3289883b71
+        /problems`);
         c.mockRespond(new Response(<any>{
           body: mockProblems
         }));

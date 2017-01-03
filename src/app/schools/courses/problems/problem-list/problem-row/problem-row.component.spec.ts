@@ -3,7 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ProblemsComponent } from './problems.component';
+import { ThumbnailComponent } from './problem-row.component';
 
-describe('ProblemsComponent', () => {
+describe('ThumbnailComponent', () => {
+
 });

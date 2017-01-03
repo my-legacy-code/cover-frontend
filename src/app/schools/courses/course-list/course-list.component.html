@@ -1,4 +1,10 @@
 <app-nav></app-nav>
 <div class="center">
   <app-breadcrumb [navLocations]="navLocation"></app-breadcrumb>
+  <ul>
+    <app-thumbnail *ngFor="let course of courses" [routerLink]="[course.id, 'problems']">
+      <app-course-row  class="dove-gray" [course]="course" (click)="onCourseSelected(course)">
+      </app-course-row>
+    </app-thumbnail>
+  </ul>
 </div>

@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {ProblemsComponent} from "./problems.component";
 import {ProblemListComponent} from "./problem-list/problem-list.component";
 import {ProblemDetailComponent} from "./problem-detail/problem-detail.component";
 /**
@@ -8,11 +7,10 @@ import {ProblemDetailComponent} from "./problem-detail/problem-detail.component"
  */
 const problemsRoutes: Routes = [
   {
-    path: 'schools/:school_id/courses/:course_id/problems',
-    component: ProblemsComponent,
+    path: 'problems',
     children: [
       {path: '', component: ProblemListComponent},
-      {path: ':id', component: ProblemDetailComponent}
+      {path: ':problemId', component: ProblemDetailComponent}
     ]}
 ];
 

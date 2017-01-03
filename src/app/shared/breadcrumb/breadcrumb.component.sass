@@ -4,21 +4,37 @@
 
 \:host
   display: block
+  border-bottom: 1px solid $mercury
 .nav
   margin: 0
   padding: 0
   >li
     display: inline-block
-    font-size: 20px
     font-weight: 600
-    >a
+    font-size: 0
+    >div
+      display: inline-block
       vertical-align: middle
       text-decoration: none
       color: $warm-grey
+      padding: 3px 6px
+      height: 22px
+      font-size: 18px
+      margin: 4px 0
+      border-radius: 2px
+      transition: background-color $ease-out-expo, color $ease-out-expo
+      &:hover
+        &:not(:last-child)
+          cursor: pointer
+          background-color: $warm-grey
+          color: white
+
     > span
+      font-size: 18px
       vertical-align: middle
-      padding: 0 10px
+      padding: 0 6px
       color: $warm-grey
+
 
 //.header
 //  display: flex

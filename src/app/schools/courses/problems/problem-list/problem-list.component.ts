@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {ProblemService} from "../shared/problem.service";
-import {Observable} from "rxjs";
 import {Problem} from "../shared/problem.model";
+import {ActivatedRoute, Params} from "@angular/router";
+import {SchoolService} from "../../../shared/school.service";
+import {CourseService} from "../../shared/course.service";
+import {NavLocation} from "../../../../shared/breadcrumb/nav-location.model";
 
 @Component({
   selector: 'app-problem-list',
@@ -10,18 +13,47 @@ import {Problem} from "../shared/problem.model";
 })
 export class ProblemListComponent implements OnInit {
 
-  problems: Observable<Problem[]>;
+  problems: Problem[];
+  navLocation: NavLocation[];
 
-  constructor(private problemService: ProblemService) {
+  constructor(private schoolService: SchoolService,
+              private courseService: CourseService,
+              private problemService: ProblemService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.problems = this.problemService.problems;
-    this.getProblems();
+    this.problemService.problemsObservable().subscribe(
+      (problems) => this.problems = problems
+    );
+    this.schoolService
+      .currentSchoolObservable()
+      .combineLatest(
+        this.courseService.currentCourseObservable(),
+        (school, course) => ({school, course}))
+      .subscribe((schoolCourse) => {
+        if (schoolCourse.school != null && schoolCourse.course != null) {
+          this.navLocation = [
+            {
+              title: schoolCourse.school.acronym,
+              route: `/schools/${schoolCourse.school.id}/courses`
+            },
+            {
+              title: schoolCourse.course.title,
+              route: `/schools/${schoolCourse.school.id}/courses/${schoolCourse.course.id}/problems`
+            }
+          ]
+        }
+      });
+
+    this.route.params
+    .subscribe((params: Params) => {
+      this.schoolService.getSchool(params['schoolId']);
+      this.courseService.getCourse(params['courseId'])
+    });
   }
 
-  getProblems() {
-    this.problemService
-      .getProblems();
+  setCurrentProblem(problem: Problem) {
+    this.problemService.setCurrentProblem(problem);
   }
 }

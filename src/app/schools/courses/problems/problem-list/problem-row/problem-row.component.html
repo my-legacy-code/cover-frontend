@@ -1,0 +1,8 @@
+<span class="info">
+  <div class="title">{{problem.title}}</div>
+  <div class="description">{{problem.description}}</div>
+  </span>
+<span class="due" *ngIf="problem.due != null">
+  <div class="due-icon"></div>
+  <span class="due-date">Due {{problem.due | fromNow}}</span>
+</span>

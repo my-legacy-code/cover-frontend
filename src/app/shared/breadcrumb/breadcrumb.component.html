@@ -1,7 +1,7 @@
 <!--<div class="header">-->
   <ul class="nav">
     <li *ngFor="let navlocation of navLocations; let i = index">
-      <a [routerLink]="navlocation.route">{{navlocation.title}}</a>
+      <div [routerLink]="navlocation.route" [title]="navlocation.title">{{navlocation.title}}</div>
       <span *ngIf="i < navLocations.length - 1">&gt;</span>
     </li>
   </ul>

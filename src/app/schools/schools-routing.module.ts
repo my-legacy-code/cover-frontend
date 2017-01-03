@@ -3,15 +3,15 @@
  */
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {SchoolsComponent} from "./schools-list.component";
-import {CourseListComponent} from "./courses/course-list/course-list.component";
 /**
  * Created by harryliu on 12/18/16.
  */
 const schoolRoutes: Routes = [
-  {path: 'schools',children: [
-    {path: ':id', component: CourseListComponent}
-  ]}
+  {
+    path: 'schools', children: [
+    {path: ':schoolId', loadChildren: 'app/schools/courses/courses.module#CoursesModule'}
+    ]
+  }
 ];
 
 @NgModule({
@@ -22,4 +22,5 @@ const schoolRoutes: Routes = [
     RouterModule
   ]
 })
-export class SchoolsRoutingModule {}
+export class SchoolsRoutingModule {
+}

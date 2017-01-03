@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-thumbnail',
@@ -6,7 +6,7 @@ import {Component, OnInit, Input} from '@angular/core';
   styleUrls: ['./thumbnail.component.sass']
 })
 export class ThumbnailComponent implements OnInit {
-  @Input() problem;
+
   constructor() { }
 
   ngOnInit() {

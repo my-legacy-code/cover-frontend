@@ -1,7 +1,10 @@
+<app-nav></app-nav>
+<div class="center">
+  <app-breadcrumb [navLocations]="navLocation"></app-breadcrumb>
 <ul>
-  <li *ngFor="let problem of problems | async" (click)="setCurrentProblem(problem)">
-    <a>
-      <!--<app-thumbnail [problem]="problem" routerLink="/problems/{{problem.id}}"></app-thumbnail>-->
-    </a>
-  </li>
+  <app-thumbnail *ngFor="let problem of problems"
+                 [routerLink]="[problem.id]" (click)="setCurrentProblem(problem)">
+    <app-problem-row [problem]="problem"></app-problem-row>
+  </app-thumbnail>
 </ul>
+</div>
