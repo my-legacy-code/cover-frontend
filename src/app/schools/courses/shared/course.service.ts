@@ -49,14 +49,10 @@ export class CourseService {
       .map(this.extractData)
       .subscribe(this.currentCourse);
 
-    this.schoolService
-      .currentSchoolObservable()
-      .combineLatest(
-        this.currentCourseId,
-        (school, courseId) => ({school, courseId}))
-      .subscribe((schoolCourseId) => {
-        if (schoolCourseId.school && schoolCourseId.courseId) {
-          this.show.next(`${environment.apiEndpoint}/schools/${schoolCourseId.school.id}/courses/${schoolCourseId.courseId}`)
+    this.currentCourseId
+      .subscribe((courseId) => {
+        if (courseId) {
+          this.show.next(`${environment.apiEndpoint}/courses/${courseId}`)
         }
       });
 

@@ -1,8 +1,7 @@
 import {
   Component, OnInit, Input, ElementRef, ViewEncapsulation, HostListener
 } from '@angular/core';
-import {HightlightPipe} from "./highlight.pipe";
-import {SafeHtml} from "@angular/platform-browser";
+import {Keyword} from "../../../../../shared/Keyword";
 
 @Component({
   selector: 'app-problem-body',
@@ -11,22 +10,21 @@ import {SafeHtml} from "@angular/platform-browser";
   encapsulation: ViewEncapsulation.Native
 })
 export class ProblemBodyComponent implements OnInit{
-  @Input() problem;
+  @Input() problemBody: string;
+  @Input() keywords: Keyword[];
+
   popupTop: number;
   popupLeft: number;
   selected: boolean;
-  body: SafeHtml;
   shadowRoot;
   link: string;
 
-  constructor(private el: ElementRef, private highlightPipe: HightlightPipe) {
+  constructor(private el: ElementRef) {
 
   }
 
   ngOnInit() {
     this.selected = false;
-    this.updateBody();
-
     this.shadowRoot = this.el.nativeElement.shadowRoot;
   }
 
@@ -40,20 +38,20 @@ export class ProblemBodyComponent implements OnInit{
       let length = range.endOffset - range.startOffset;
       if(length > 0) {
         let start = this.getStart(range);
-        let keyword = {
-          id: -1,
+        let keyword: Keyword = {
           start: start,
           length: length,
           selected: true
         };
 
         this.selected = true;
-        this.problem.keywords.push(keyword);
-        this.updateBody();
+        this.keywords.push(keyword);
+        this.keywords = Object.assign([], this.keywords);
         let rect = range.getBoundingClientRect();
         // Setup popup window
         this.updatePopupPosition(rect);
-      }
+
+      } else this.cancel();
     }
   }
 
@@ -67,20 +65,16 @@ export class ProblemBodyComponent implements OnInit{
     let previousNode = range.startContainer.previousSibling;
     if(previousNode) {
       // Select on new content
-      let linkId: number = parseInt(previousNode.attributes.getNamedItem('data-link-id').value);
+      let keywordId: string = previousNode.attributes.getNamedItem('data-keyword-id').value;
 
-      let link = this.problem.keywords.filter((keyword)=> keyword.id == linkId)[0];
-      return link.start + link.length + range.startOffset;
+      let keyword = this.keywords.filter((keyword)=> keyword.id == keywordId)[0];
+      return keyword.start + keyword.length + range.startOffset;
     }
     return range.startOffset;
   }
 
   submitLink() {
     this.selected = false;
-  }
-
-  updateBody() {
-    this.body = this.highlightPipe.transform(this.problem);
   }
 
   cancel() {
@@ -90,8 +84,7 @@ export class ProblemBodyComponent implements OnInit{
   }
 
   deselect() {
-    this.problem.keywords = this.problem.keywords.filter(keyword=> !keyword.selected);
-    this.updateBody();
+    this.keywords = this.keywords.filter(keyword=> !keyword.selected);
   }
 
   onKeydown(event: KeyboardEvent) {
@@ -118,5 +111,9 @@ export class ProblemBodyComponent implements OnInit{
         }
         break;
     }
+  }
+
+  showPopup() {
+    console.log("Popup");
   }
 }

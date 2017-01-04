@@ -9,6 +9,6 @@ export interface Problem {
   description?: string,
   favorite?: boolean,
   due?: Date,
-  postedDate?: Date,
+  createdAt?: Date,
   keywords?: Keyword[]
 }

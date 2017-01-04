@@ -3,12 +3,11 @@ import {CommonModule} from "@angular/common";
 
 import { ProblemListComponent } from './problem-list/problem-list.component';
 import { ThumbnailComponent } from './problem-list/problem-row/problem-row.component';
-import {ProblemService} from "./shared/problem.service";
 import {HttpModule} from "@angular/http";
 import { ProblemDetailComponent } from './problem-detail/problem-detail.component';
 import { ProblemHeaderComponent } from './problem-detail/problem-header/problem-header.component';
 import { ProblemBodyComponent } from './problem-detail/problem-body/problem-body.component';
-import {HightlightPipe} from "./problem-detail/problem-body/highlight.pipe";
+import {HighlightPipe} from "./problem-detail/problem-body/highlight.pipe";
 import {KeywordComponent} from './problem-detail/keyword/keyword.component';
 import { LinkComponent } from './problem-detail/keyword/link/link.component';
 import { VotesComponent } from './problem-detail/keyword/link/votes/votes.component';
@@ -36,10 +35,11 @@ import {ProblemsRoutingModule} from "./problems-routing.module";
     LinkComponent,
     VotesComponent,
     LinktypePipe,
-    LinkiconPipe
+    LinkiconPipe,
+    HighlightPipe
   ],
   providers: [
-    {provide: HightlightPipe, useClass: HightlightPipe}
+    {provide: HighlightPipe, useClass: HighlightPipe}
     ],
   exports: [
     ProblemListComponent

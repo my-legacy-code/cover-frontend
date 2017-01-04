@@ -2,10 +2,12 @@
  * Created by harryliu on 12/14/16.
  */
 export interface User {
-  name?: string;
+  lastName?:string;
+  firstName?: string;
   email?: string;
   password?: string;
   school?: string;
-  classOfGraduation?: number;
+  major?: string;
+  createdAt?: Date
   id: string;
 }

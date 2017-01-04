@@ -4,11 +4,10 @@ import {Link} from "./Link";
  */
 
 export interface Keyword {
-  id: number;
+  id?: string;
   start: number;
   length: number;
   selected?: boolean;
-  content: string;
-  bestLinkId: Link;
-  links: Link[];
+  content?: string;
+  bestLinkId?: Link;
 }

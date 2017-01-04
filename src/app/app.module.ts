@@ -11,6 +11,7 @@ import {CoursesModule} from "./schools/courses/courses.module";
 import {SchoolService} from "./schools/shared/school.service";
 import {ProblemService} from "./schools/courses/problems/shared/problem.service";
 import {CourseService} from "./schools/courses/shared/course.service";
+import {KeywordService} from "./schools/courses/problems/problem-detail/keyword/keyword.service";
 
 
 
@@ -31,7 +32,8 @@ import {CourseService} from "./schools/courses/shared/course.service";
   providers: [
     SchoolService,
     ProblemService,
-    CourseService
+    CourseService,
+    KeywordService
   ],
   bootstrap: [AppComponent]
 })

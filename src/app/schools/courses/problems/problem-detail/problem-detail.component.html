@@ -4,10 +4,10 @@
   <app-tags class="dove-gray" [tags]="tags" ></app-tags>
   <div class="body">
     <app-problem-header [problem]="problem"></app-problem-header>
-    <app-problem-body [problem]="problem"></app-problem-body>
+    <app-problem-body [problemBody]="problem.body" [keywords]="keywords"></app-problem-body>
   </div>
   <ul class="keywords">
-    <app-keyword *ngFor="let kw of getValidKeywords()" [keyword]="kw">
+    <app-keyword *ngFor="let keyword of getValidKeywords()" [keyword]="keyword">
     </app-keyword>
   </ul>
 </div>

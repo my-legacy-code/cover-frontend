@@ -5,8 +5,6 @@ import {Http, Response} from "@angular/http";
 import {Problem} from "./problem.model";
 import {SchoolService} from "../../../shared/school.service";
 import {CourseService} from "../../shared/course.service";
-import {School} from "../../../shared/school.model";
-import {Course} from "../../shared/course.model";
 import {Keyword} from "../../../../shared/Keyword";
 
 export interface IProblemsOperation extends Function {
@@ -26,7 +24,7 @@ export class ProblemService {
   private index: Subject<string> = new Subject<string>();
   private show: Subject<string> = new Subject<string>();
 
-  constructor(private http: Http, private schoolService: SchoolService, private courseService: CourseService) {
+  constructor(private http: Http, private courseService: CourseService) {
     this.problems = this.operations
       .scan((problems: Problem[], operation: IProblemsOperation): Problem[] =>
         operation(problems), initialProblems)
@@ -41,52 +39,25 @@ export class ProblemService {
       .subscribe(this.operations);
 
 
-    schoolService
-      .currentSchoolObservable()
-      .combineLatest(
-        courseService.currentCourseObservable(),
-        (school: School, course: Course) => ({school, course})
-      )
-      .subscribe((schoolCourse) => {
-        if (schoolCourse.school && schoolCourse.course) {
-          this.index.next(`${environment.apiEndpoint}/schools/${schoolCourse.school.id}/courses/${schoolCourse.course.id}/problems`)
+    courseService.currentCourseObservable()
+      .subscribe((course) => {
+        if (course) {
+          this.index.next(`${environment.apiEndpoint}/courses/${course.id}/problems`)
         }
       });
 
     this.show
       .flatMap((requestUrl) => this.http.get(requestUrl))
       .map(this.extractData)
-      .map((p) => p.keywords ?
-        Object.assign({}, p, {
-          keywords: p.keywords.map((k: Keyword) => Object.assign({}, k, {
-            content: p.body.substr(k.start, k.length)
-          }))
-        }) : Object.assign({}, p, {keywords: []}))
       .subscribe(this.currentProblem);
 
-    schoolService
-      .currentSchoolObservable()
-      .combineLatest(
-        courseService.currentCourseObservable(),
-        this.currentProblemId,
-        (school: School, course: Course, problemId: string) =>
-          ({school, course, problemId})
-      )
-      .subscribe((value) => {
-        if (value.school && value.course && value.problemId) {
-          this.show.next(`${environment.apiEndpoint}/schools/${value.school.id}/courses/${value.course.id}/problems/${value.problemId}`)
+    this.currentProblemId
+      .subscribe((problemId) => {
+        if (problemId) {
+          this.show.next(`${environment.apiEndpoint}/problems/${problemId}`)
         }
       });
   }
-
-  // getProblem(schoolId: string, courseId: string, problemId: string) {
-  //   let problemUrl = `${environment.apiEndpoint}/schools/${schoolId}/courses/${courseId}/problems/${problemId}`;
-  //   this.show.next(problemUrl);
-  // }
-
-  // getProblems(schoolId: string, courseId: string) {
-  //   this.index.next(`${environment.apiEndpoint}/schools/${schoolId}/courses/${courseId}/problems`);
-  // }
 
   problemsObservable(): Observable<Problem[]> {
     return this.problems;

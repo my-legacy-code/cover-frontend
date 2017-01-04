@@ -7,20 +7,21 @@
 
 .problem-body
   outline: none
-  white-space: pre-wrap
+  //white-space: pre-wrap
 
 .submit-link-popup
   visibility: hidden
+  transition: left $ease-out-expo, top $ease-out-expo, opacity $ease-out-expo
   &.active
     visibility: visible
+    opacity: 0.95
   white-space: nowrap
   position: fixed
   z-index: 10
   width: 330px
   height: 40px
   background-color: #F8F8F8
-  opacity: .95
-  transition: left $ease-out-expo, top $ease-out-expo
+  opacity: 0
   margin-top: -12px
   filter: drop-shadow($strong-shadow)
   border-radius: 4px

@@ -7,6 +7,7 @@ import {CourseService} from "../../shared/course.service";
 import {TermYearPipe} from "../../shared/term-year.pipe";
 import {NavLocation} from "../../../../shared/breadcrumb/nav-location.model";
 import {SchoolService} from "../../../shared/school.service";
+import {KeywordService} from "./keyword/keyword.service";
 
 @Component({
   selector: 'app-problem-detail',
@@ -15,6 +16,7 @@ import {SchoolService} from "../../../shared/school.service";
 })
 export class ProblemDetailComponent implements OnInit {
 
+  keywords: Keyword[] = [];
   problem: Problem;
   tags: string[];
   navLocations: NavLocation[];
@@ -22,13 +24,15 @@ export class ProblemDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private schoolService: SchoolService,
               private problemService: ProblemService,
-              private courseService: CourseService) {
+              private courseService: CourseService,
+              private keywordService: KeywordService) {
   }
 
   ngOnInit() {
     this.problemService
       .currentProblemObservable()
       .subscribe((problem) => this.problem = problem);
+
 
     this.schoolService
       .currentSchoolObservable()
@@ -73,11 +77,16 @@ export class ProblemDetailComponent implements OnInit {
         this.courseService.getCourse(params['courseId']);
         this.problemService.setCurrentProblem({id: params['problemId']});
       });
+
+    this.keywordService
+      .keywordsObservable()
+      .subscribe((keywords) => {
+        this.keywords = keywords;
+      });
+
   }
 
   getValidKeywords(): Keyword[] {
-    return this.problem.keywords.filter(function (v) {
-      return v.id !== -1
-    });
+    return this.keywords.filter((keyword) => keyword.id);
   }
 }
