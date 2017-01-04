@@ -35,3 +35,5 @@ testem.log
 Thumbs.db
 npm-debug.log.4040145165
 mock.json
+npm-debug.log.3439508965
+coverage/
