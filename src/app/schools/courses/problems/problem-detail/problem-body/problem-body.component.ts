@@ -55,7 +55,7 @@ export class ProblemBodyComponent implements OnInit{
           // Setup popup window
           this.updatePopupPosition(rect);
         }
-      } else this.cancel();
+      }
     }
   }
 
