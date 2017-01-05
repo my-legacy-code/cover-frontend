@@ -1,5 +1,6 @@
 import {
-  Component, OnInit, Input, ElementRef, ViewEncapsulation, HostListener, ViewChild, Output, EventEmitter
+  Component, OnInit, Input, ElementRef, ViewEncapsulation, HostListener, ViewChild, Output, EventEmitter, OnChanges,
+  SimpleChanges
 } from '@angular/core';
 import {Keyword} from "../../../../../shared/Keyword";
 import {setTimeout} from "timers";
@@ -12,7 +13,7 @@ import set = Reflect.set;
   styleUrls: ['./problem-body.component.sass'],
   encapsulation: ViewEncapsulation.Native
 })
-export class ProblemBodyComponent implements OnInit{
+export class ProblemBodyComponent implements OnInit, OnChanges{
   @Input() problemBody: string;
   @Input() keywords: Keyword[];
   @Output() onAddLink: EventEmitter<any> = new EventEmitter<any>();
@@ -36,6 +37,10 @@ export class ProblemBodyComponent implements OnInit{
     this.selected = false;
     this.shadowRoot = this.el.nativeElement.shadowRoot;
     this.problemBodyEl = this.shadowRoot.querySelector('#problem-body');
+  }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
     this.updateProblemBody();
   }
 
@@ -71,10 +76,10 @@ export class ProblemBodyComponent implements OnInit{
           let rect = range.getBoundingClientRect();
           // Setup popup window
           this.updatePopupPosition(rect);
+          this.updateProblemBody();
         }
       }
     }
-    this.updateProblemBody();
   }
 
   updatePopupPosition(rect, absolutePosition: boolean = false) {
