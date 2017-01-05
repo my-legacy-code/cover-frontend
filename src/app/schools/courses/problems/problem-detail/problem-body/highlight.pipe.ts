@@ -7,11 +7,11 @@ import {SafeHtml, DomSanitizer} from "@angular/platform-browser";
 })
 export class HighlightPipe implements PipeTransform {
 
-  constructor(private domSanitizer: DomSanitizer) {
+  constructor() {
 
   }
 
-  transform(problemBody: string, keywords: Keyword[]): SafeHtml {
+  transform(problemBody: string, keywords: Keyword[]): string {
     keywords.sort((v1: Keyword, v2: Keyword):number => v1.start - v2.start );
 
     //create an empty list
@@ -26,12 +26,12 @@ export class HighlightPipe implements PipeTransform {
     });
     htmlParts.push(problemBody.substring(lastIndex, problemBody.length));
 
-    return this.domSanitizer.bypassSecurityTrustHtml(htmlParts.join(''));
+    return htmlParts.join('');
   }
 
   formatKeyword(htmlParts, text, keyword, index) {
     if (!keyword.selected) {
-      htmlParts.push(`<a data-keyword-id="${keyword.id}">`);
+      htmlParts.push(`<a data-keyword-id="${keyword.id}" href="${keyword.bestLinkUrl}" target="_blank">`);
       htmlParts.push(`${text}[${index + 1}]`);
       htmlParts.push(`</a>`);
     } else {

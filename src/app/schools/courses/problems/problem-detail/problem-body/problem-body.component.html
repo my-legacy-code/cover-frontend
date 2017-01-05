@@ -1,11 +1,11 @@
 <div id="problem-body" class="problem-body"
-     [innerHtml]="problemBody | highlight: keywords"
      (mouseup)="getLocation($event)"
      (mousedown)="deselect($event)"
-     (mouseover)="onMouseOver($event)">
+     (mouseover)="onMouseOver($event)"
+     #problemBodyEl>
 </div>
 <app-submit-link-popup
-  [ngClass]="{'active': selected}"
+  [ngClass]="{'active': showPopup}"
   [ngStyle]="{'top.px': popupTop, 'left.px': popupLeft}"
   [loading]="loading"
   (onSubmitLink)="submitLink($event)"

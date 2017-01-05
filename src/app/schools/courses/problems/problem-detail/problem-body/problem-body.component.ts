@@ -2,6 +2,9 @@ import {
   Component, OnInit, Input, ElementRef, ViewEncapsulation, HostListener, ViewChild, Output, EventEmitter
 } from '@angular/core';
 import {Keyword} from "../../../../../shared/Keyword";
+import {setTimeout} from "timers";
+import {HighlightPipe} from "./highlight.pipe";
+import set = Reflect.set;
 
 @Component({
   selector: 'app-problem-body',
@@ -13,17 +16,19 @@ export class ProblemBodyComponent implements OnInit{
   @Input() problemBody: string;
   @Input() keywords: Keyword[];
   @Output() onAddLink: EventEmitter<any> = new EventEmitter<any>();
+
   @ViewChild('submitLinkPopupComponent') submitLinkPopupComponent;
 
   editingKeyword: Keyword;
   popupTop: number;
   popupLeft: number;
+  showPopup: boolean;
   selected: boolean;
   loading: boolean = false;
   shadowRoot;
-  problemBodyEl: HTMLDivElement;
+  problemBodyEl;
 
-  constructor(private el: ElementRef) {
+  constructor(private el: ElementRef, private highlightPipe: HighlightPipe) {
 
   }
 
@@ -31,9 +36,16 @@ export class ProblemBodyComponent implements OnInit{
     this.selected = false;
     this.shadowRoot = this.el.nativeElement.shadowRoot;
     this.problemBodyEl = this.shadowRoot.querySelector('#problem-body');
+    this.updateProblemBody();
   }
 
-  getLocation() {
+  updateProblemBody() {
+    setTimeout(()=>{
+      this.problemBodyEl.innerHTML = this.highlightPipe.transform(this.problemBody, this.keywords);
+    }, 0);
+  }
+
+  getLocation(event) {
     // this.cancel();
     let selection = this.shadowRoot.getSelection();
 
@@ -42,6 +54,7 @@ export class ProblemBodyComponent implements OnInit{
       let range = selection.getRangeAt(0);
       let length = range.endOffset - range.startOffset;
       if(length > 0 && range.startContainer == range.endContainer) {
+        this.showPopup = true;
         this.selected = true;
         this.loading = false;
         let node = range.startContainer.parentNode;
@@ -61,6 +74,7 @@ export class ProblemBodyComponent implements OnInit{
         }
       }
     }
+    this.updateProblemBody();
   }
 
   updatePopupPosition(rect, absolutePosition: boolean = false) {
@@ -89,8 +103,8 @@ export class ProblemBodyComponent implements OnInit{
   }
 
   closePopup() {
-    this.selected = false;
-    this.deselect();
+    this.showPopup = false;
+    this.deselect(null);
   }
 
   cancel() {
@@ -99,8 +113,12 @@ export class ProblemBodyComponent implements OnInit{
     this.loading = false;
   }
 
-  deselect() {
-    this.keywords = this.keywords.filter(keyword=> !keyword.selected);
+  deselect(event) {
+    if(!event || (event && !event.target.dataset.keywordId)) {
+      this.keywords = this.keywords.filter(keyword => !keyword.selected);
+      this.selected = false;
+      this.updateProblemBody();
+    }
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -112,10 +130,8 @@ export class ProblemBodyComponent implements OnInit{
       case "Enter":
         break;
       default:
-        if(this.selected) {
-          let linkField = this.shadowRoot.querySelector('#link-field');
-          linkField.focus();
-        }
+        if(this.showPopup) this.shadowRoot.querySelector('#link-field').focus();
+
         break;
     }
   }
@@ -126,8 +142,8 @@ export class ProblemBodyComponent implements OnInit{
       this.loading = false;
       this.editingKeyword = this.keywords.filter((keyword)=>
         keyword.id == element.dataset.keywordId)[0];
-      this.deselect();
-      this.selected = true;
+      if (this.selected) this.deselect(null);
+      this.showPopup = true;
       this.updatePopupPosition({
         left: element.offsetLeft,
         top: element.offsetTop,

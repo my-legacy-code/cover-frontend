@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, ViewEncapsulation} from '@angular/core';
 
 enum State {
   upVoted,
@@ -9,7 +9,8 @@ enum State {
 @Component({
   selector: 'app-votes',
   templateUrl: './votes.component.html',
-  styleUrls: ['./votes.component.sass']
+  styleUrls: ['./votes.component.sass'],
+  encapsulation: ViewEncapsulation.Native
 })
 export class VotesComponent implements OnInit {
 

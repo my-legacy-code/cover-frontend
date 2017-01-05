@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiEndpoint: 'http://api.cover.wehackers.club'
+  apiEndpoint: 'https://cover-api.herokuapp.com'
 };
