@@ -1,12 +1,12 @@
 <div class="content">
 <span class="link-info">
   <div class="link-title">{{link.title}}</div>
-  <div class="link-link"><a>{{link.link}}</a></div>
+  <div class="link-url"><a [href]="link.url">{{link.url}}</a></div>
 </span>
   <img class="user-avatar" [src]="link.contributor.email | avatar">
 </div>
 <div class="link-icon">
-  <img [src]="link.type | linktype | linkicon">
+  <img [src]="link.type | linkicon">
 </div>
 <app-votes
   [ngClass]="{voted: voted}"

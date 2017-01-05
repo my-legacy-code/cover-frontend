@@ -3,9 +3,7 @@ import {Subject, Observable, BehaviorSubject} from "rxjs";
 import {environment} from "../../../../../environments/environment";
 import {Http, Response} from "@angular/http";
 import {Problem} from "./problem.model";
-import {SchoolService} from "../../../shared/school.service";
 import {CourseService} from "../../shared/course.service";
-import {Keyword} from "../../../../shared/Keyword";
 
 export interface IProblemsOperation extends Function {
   (problems: Problem[]): Problem[];
@@ -32,6 +30,7 @@ export class ProblemService {
       .refCount();
 
     this.index
+      .map((courseId)=> `${environment.apiEndpoint}/courses/${courseId}/problems`)
       .flatMap((requestUrl) => this.http.get(requestUrl))
       .map(this.extractData)
       .map((newProblems): IProblemsOperation =>
@@ -42,11 +41,12 @@ export class ProblemService {
     courseService.currentCourseObservable()
       .subscribe((course) => {
         if (course) {
-          this.index.next(`${environment.apiEndpoint}/courses/${course.id}/problems`)
+          this.index.next(course.id)
         }
       });
 
     this.show
+      .map((problemId) => `${environment.apiEndpoint}/problems/${problemId}`)
       .flatMap((requestUrl) => this.http.get(requestUrl))
       .map(this.extractData)
       .subscribe(this.currentProblem);
@@ -54,7 +54,7 @@ export class ProblemService {
     this.currentProblemId
       .subscribe((problemId) => {
         if (problemId) {
-          this.show.next(`${environment.apiEndpoint}/problems/${problemId}`)
+          this.show.next(problemId)
         }
       });
   }

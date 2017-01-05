@@ -1,38 +1,71 @@
 @import "../../../../../../../shared/colors"
 @import "../../../../../../../shared/shadows"
+@import "../../../../../../../shared/easings"
+
 \:host
   display: block
   position: relative
 
-\:host-context(.site)
+\:host-context(.wiki)
   .link-title
     color : $ship-cove
-  .link-link
-    color : $slate-gray
+  .link-url
+    a
+      color : $slate-gray
   .link-icon
     background-color: $ship-cove
 
 \:host-context(.location)
   .link-title
     color : $fuchsia-pink
-  .link-link
-    color : $bouquet
+  .link-url
+    a
+      color : $bouquet
   .link-icon
     background-color: $fuchsia-pink
 
-\:host-context(.wiki)
+\:host-context(.aritical)
   .link-title
     color : $breaker-bay
-  .link-link
-    color : $juniper
+  .link-url
+    a
+      color : $juniper
   .link-icon
     background-color: $breaker-bay
 
 \:host-context(.video)
   .link-title
     color : $chestnut-rose
-  .link-link
-    color : $pharlap
+  .link-url
+    a
+      color : $pharlap
+  .link-icon
+    background-color: $chestnut-rose
+
+\:host-context(.graph)
+  .link-title
+    color : $chestnut-rose
+  .link-url
+    a
+      color : $pharlap
+  .link-icon
+    background-color: $chestnut-rose
+
+\:host-context(.codesnippt)
+  .link-title
+    color : $chestnut-rose
+  .link-url
+    a
+      color : $pharlap
+  .link-icon
+    background-color: $chestnut-rose
+
+\:host-context(.book)
+  .link-title
+    color : $chestnut-rose
+  .link-url
+    a
+      color : $pharlap
   .link-icon
     background-color: $chestnut-rose
 
@@ -40,7 +73,11 @@
   display : flex
   background-color : white
   padding : 8px 8px 8px 40px
-  box-shadow : $middle-shadow
+  box-shadow : $material-depth1-shadow
+  transition: box-shadow $ease-out-expo, transform $ease-out-expo
+  &:hover
+    transform: scale(1.01)
+    box-shadow: $material-depth3-shadow
   &:not(:last-child)
     margin-bottom : 12px
   position: relative
@@ -53,9 +90,13 @@
   margin-top: 4px
   font-size : 20px
 
-.link-link
+.link-url
   margin-bottom: 4px
   font-size : 14px
+  a
+    text-decoration: none
+    &:hover
+      text-decoration: underline
 
 .user-avatar
   width : 54px

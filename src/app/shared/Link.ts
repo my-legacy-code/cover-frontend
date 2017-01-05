@@ -1,12 +1,11 @@
-import {LinkType} from "./LinkType";
 import {User} from "./user.model";
 /**
  * Created by harryliu on 12/14/16.
  */
 export interface Link {
   id: number,
-  link: string,
-  type: LinkType,
+  url: string,
+  type: string,
   title: string,
   contributor: User,
   upvotes: number,

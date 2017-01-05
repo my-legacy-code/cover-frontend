@@ -13,7 +13,6 @@ const initialSchools: School[] = [];
 @Injectable()
 export class SchoolService {
 
-  private schoolsUrl = `${environment.apiEndpoint}/schools`;
   private schools: Observable<School[]>;
   private operations: Subject<ISchoolOperation> = new Subject<ISchoolOperation>();
   private currentSchool: BehaviorSubject<School> = new BehaviorSubject<School>(null);
@@ -26,6 +25,7 @@ export class SchoolService {
         operation(schools), initialSchools);
 
     this.index
+      .map(()=>`${environment.apiEndpoint}/schools`)
       .flatMap((requestUrl) => http.get(requestUrl))
       .map(this.extractData)
       .map((newSchools): ISchoolOperation =>
@@ -38,7 +38,7 @@ export class SchoolService {
   }
 
   getSchools() {
-    this.index.next(this.schoolsUrl);
+    this.index.next();
   }
 
   setCurrentSchool(school: School) {

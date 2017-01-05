@@ -17,6 +17,7 @@ export class ProblemBodyComponent implements OnInit{
   popupLeft: number;
   selected: boolean;
   shadowRoot;
+  problemBodyEl: HTMLDivElement;
   link: string;
 
   constructor(private el: ElementRef) {
@@ -26,6 +27,7 @@ export class ProblemBodyComponent implements OnInit{
   ngOnInit() {
     this.selected = false;
     this.shadowRoot = this.el.nativeElement.shadowRoot;
+    this.problemBodyEl = this.shadowRoot.querySelector('#problem-body');
   }
 
   getLocation() {
@@ -36,21 +38,23 @@ export class ProblemBodyComponent implements OnInit{
     if(selection.rangeCount) {
       let range = selection.getRangeAt(0);
       let length = range.endOffset - range.startOffset;
-      if(length > 0) {
-        let start = this.getStart(range);
-        let keyword: Keyword = {
-          start: start,
-          length: length,
-          selected: true
-        };
-
+      if(length > 0 && range.startContainer == range.endContainer) {
         this.selected = true;
-        this.keywords.push(keyword);
-        this.keywords = Object.assign([], this.keywords);
-        let rect = range.getBoundingClientRect();
-        // Setup popup window
-        this.updatePopupPosition(rect);
+        let node = range.startContainer.parentNode;
+        if(!node.attributes.getNamedItem('data-keyword-id')) {
+          let start = this.getStart(range);
+          let keyword: Keyword = {
+            start: start,
+            length: length,
+            selected: true
+          };
 
+          this.keywords.push(keyword);
+          this.keywords = Object.assign([], this.keywords);
+          let rect = range.getBoundingClientRect();
+          // Setup popup window
+          this.updatePopupPosition(rect);
+        }
       } else this.cancel();
     }
   }
@@ -113,7 +117,17 @@ export class ProblemBodyComponent implements OnInit{
     }
   }
 
-  showPopup() {
-    console.log("Popup");
+  onMouseOver(event) {
+    let element = event.target;
+    if(element.dataset.keywordId) {
+      this.deselect();
+      this.selected = true;
+      this.updatePopupPosition({
+        left: element.offsetLeft,
+        top: element.offsetTop,
+        width: element.offsetWidth,
+        height: element.offsetHeight
+      })
+    }
   }
 }

@@ -30,6 +30,7 @@ export class CourseService {
       .refCount();
 
     this.index
+      .map((schoolId)=>`${environment.apiEndpoint}/schools/${schoolId}/courses`)
       .flatMap((requestUrl) => http.get(requestUrl))
       .map(this.extractData)
       .map((newCourses): ICoursesOperation =>
@@ -40,11 +41,12 @@ export class CourseService {
       .currentSchoolObservable()
       .subscribe( (school) => {
         if(school){
-          this.index.next(`${environment.apiEndpoint}/schools/${school.id}/courses`)
+          this.index.next(school.id)
         }
       });
 
     this.show
+      .map((courseId) => `${environment.apiEndpoint}/courses/${courseId}`)
       .flatMap((requestUrl) => http.get(requestUrl))
       .map(this.extractData)
       .subscribe(this.currentCourse);
@@ -52,7 +54,7 @@ export class CourseService {
     this.currentCourseId
       .subscribe((courseId) => {
         if (courseId) {
-          this.show.next(`${environment.apiEndpoint}/courses/${courseId}`)
+          this.show.next(courseId)
         }
       });
 

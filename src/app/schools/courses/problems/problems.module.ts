@@ -11,7 +11,6 @@ import {HighlightPipe} from "./problem-detail/problem-body/highlight.pipe";
 import {KeywordComponent} from './problem-detail/keyword/keyword.component';
 import { LinkComponent } from './problem-detail/keyword/link/link.component';
 import { VotesComponent } from './problem-detail/keyword/link/votes/votes.component';
-import { LinktypePipe } from './problem-detail/keyword/link/linktype.pipe';
 import { LinkiconPipe } from './problem-detail/keyword/link/linkicon.pipe';
 import {SharedModule} from "../../../shared/shared.module";
 import {CoursesSharedModule} from "../shared/shared.module";
@@ -34,7 +33,6 @@ import {ProblemsRoutingModule} from "./problems-routing.module";
     KeywordComponent,
     LinkComponent,
     VotesComponent,
-    LinktypePipe,
     LinkiconPipe,
     HighlightPipe
   ],

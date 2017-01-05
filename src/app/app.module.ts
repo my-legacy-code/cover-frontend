@@ -12,6 +12,7 @@ import {SchoolService} from "./schools/shared/school.service";
 import {ProblemService} from "./schools/courses/problems/shared/problem.service";
 import {CourseService} from "./schools/courses/shared/course.service";
 import {KeywordService} from "./schools/courses/problems/problem-detail/keyword/keyword.service";
+import {LinkService} from "./schools/courses/problems/problem-detail/keyword/link/link.service";
 
 
 
@@ -33,7 +34,8 @@ import {KeywordService} from "./schools/courses/problems/problem-detail/keyword/
     SchoolService,
     ProblemService,
     CourseService,
-    KeywordService
+    KeywordService,
+    LinkService
   ],
   bootstrap: [AppComponent]
 })

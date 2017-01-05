@@ -15,10 +15,24 @@ export class KeywordComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this
+      .keyword
+      .links
+      .subscribe((links)=> {
+        this.links = links;
+        console.log(links);
+      });
   }
 
   getKeywordTitle(): string {
     return this.keyword.content;
   }
 
+  sortedLinks(): Link[] {
+    return this.links.sort((a: Link, b: Link) => this.getScore(b) - this.getScore(a))
+  }
+
+  private getScore(link: Link) {
+    return ( link.upvotes + link.downvotes ) * ( link.upvotes - link.downvotes )
+  }
 }

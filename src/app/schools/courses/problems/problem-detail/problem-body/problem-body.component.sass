@@ -7,7 +7,7 @@
 
 .problem-body
   outline: none
-  //white-space: pre-wrap
+  white-space: pre-wrap
 
 .submit-link-popup
   visibility: hidden
@@ -23,7 +23,7 @@
   background-color: #F8F8F8
   opacity: 0
   margin-top: -12px
-  filter: drop-shadow($strong-shadow)
+  filter: drop-shadow($material-depth3-shadow)
   border-radius: 4px
   &:after
     content: ''
@@ -49,5 +49,8 @@
 a
   color: rgb(0, 112, 201)
   font-weight: bold
+  &:hover
+    cursor: pointer
+    text-decoration: underline
 .selected
   background-color: #B9DBFA

@@ -1,7 +1,8 @@
-<div class="problem-body"
+<div id="problem-body" class="problem-body"
      [innerHtml]="problemBody | highlight: keywords"
      (mouseup)="getLocation($event)"
-      (mousedown)="deselect($event)">
+     (mousedown)="deselect($event)"
+     (mouseover)="onMouseOver($event)">
 </div>
 <div id="submit-link-popup"
      class="submit-link-popup"
