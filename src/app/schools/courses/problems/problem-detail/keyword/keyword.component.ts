@@ -22,7 +22,7 @@ export class KeywordComponent implements OnInit {
     this.linksStream = this.linkService.linksObservable(this.keyword.id);
     this.linksStream
       .subscribe((links) => {
-        this.links = links;
+        if(links) this.links = links;
       })
   }
 

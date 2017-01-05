@@ -1,5 +1,5 @@
 import {
-  Component, OnInit, Input, ElementRef, ViewEncapsulation, HostListener
+  Component, OnInit, Input, ElementRef, ViewEncapsulation, HostListener, ViewChild, Output, EventEmitter
 } from '@angular/core';
 import {Keyword} from "../../../../../shared/Keyword";
 
@@ -12,13 +12,16 @@ import {Keyword} from "../../../../../shared/Keyword";
 export class ProblemBodyComponent implements OnInit{
   @Input() problemBody: string;
   @Input() keywords: Keyword[];
+  @Output() onAddLink: EventEmitter<any> = new EventEmitter<any>();
+  @ViewChild('submitLinkPopupComponent') submitLinkPopupComponent;
 
+  editingKeyword: Keyword;
   popupTop: number;
   popupLeft: number;
   selected: boolean;
+  loading: boolean = false;
   shadowRoot;
   problemBodyEl: HTMLDivElement;
-  link: string;
 
   constructor(private el: ElementRef) {
 
@@ -40,16 +43,17 @@ export class ProblemBodyComponent implements OnInit{
       let length = range.endOffset - range.startOffset;
       if(length > 0 && range.startContainer == range.endContainer) {
         this.selected = true;
+        this.loading = false;
         let node = range.startContainer.parentNode;
         if(!node.attributes.getNamedItem('data-keyword-id')) {
           let start = this.getStart(range);
-          let keyword: Keyword = {
+          this.editingKeyword = {
             start: start,
             length: length,
             selected: true
           };
 
-          this.keywords.push(keyword);
+          this.keywords.push(this.editingKeyword);
           this.keywords = Object.assign([], this.keywords);
           let rect = range.getBoundingClientRect();
           // Setup popup window
@@ -59,10 +63,12 @@ export class ProblemBodyComponent implements OnInit{
     }
   }
 
-  updatePopupPosition(rect) {
-    let popup = this.shadowRoot.querySelector('#submit-link-popup');
-    this.popupLeft = rect.left - this.shadowRoot.host.clientLeft + (rect.width - popup.clientWidth) / 2;
-    this.popupTop = rect.top - this.shadowRoot.host.clientTop - popup.clientHeight;
+  updatePopupPosition(rect, absolutePosition: boolean = false) {
+    let popup = this.submitLinkPopupComponent.el.nativeElement;
+    let rectLeft = absolutePosition ? rect.left : rect.left + document.body.scrollLeft,
+      rectTop = absolutePosition ? rect.top : rect.top  + document.body.scrollTop;
+    this.popupLeft = rectLeft - this.shadowRoot.host.clientLeft + (rect.width - popup.clientWidth) / 2;
+    this.popupTop = rectTop - this.shadowRoot.host.clientTop - popup.clientHeight;
   }
 
   private getStart(range: Range): number {
@@ -77,29 +83,24 @@ export class ProblemBodyComponent implements OnInit{
     return range.startOffset;
   }
 
-  submitLink() {
+  submitLink(url: string) {
+    this.loading = true;
+    this.onAddLink.next({keyword: this.editingKeyword, url: url});
+  }
+
+  closePopup() {
     this.selected = false;
+    this.deselect();
   }
 
   cancel() {
-    this.selected = false;
-    this.link = '';
-    this.deselect();
+    this.submitLinkPopupComponent.clear();
+    this.closePopup();
+    this.loading = false;
   }
 
   deselect() {
     this.keywords = this.keywords.filter(keyword=> !keyword.selected);
-  }
-
-  onKeydown(event: KeyboardEvent) {
-    switch(event.key) {
-      case "Enter":
-        this.submitLink();
-        break;
-      case "Escape":
-        this.cancel();
-        break;
-    }
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -107,6 +108,8 @@ export class ProblemBodyComponent implements OnInit{
     switch(event.key) {
       case "Escape":
         this.cancel();
+        break;
+      case "Enter":
         break;
       default:
         if(this.selected) {
@@ -120,6 +123,9 @@ export class ProblemBodyComponent implements OnInit{
   onMouseOver(event) {
     let element = event.target;
     if(element.dataset.keywordId) {
+      this.loading = false;
+      this.editingKeyword = this.keywords.filter((keyword)=>
+        keyword.id == element.dataset.keywordId)[0];
       this.deselect();
       this.selected = true;
       this.updatePopupPosition({
@@ -127,7 +133,7 @@ export class ProblemBodyComponent implements OnInit{
         top: element.offsetTop,
         width: element.offsetWidth,
         height: element.offsetHeight
-      })
+      }, true)
     }
   }
 }

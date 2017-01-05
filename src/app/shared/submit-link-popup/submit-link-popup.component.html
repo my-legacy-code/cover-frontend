@@ -1,0 +1,7 @@
+<input id="link-field"
+       class="link-field"
+       placeholder="Enter to submit link, Esc to cancel"
+       (keydown)="onKeyDown($event)"
+       [(ngModel)]="url">
+<app-circular-spinner
+  [ngClass]="{active: loading}"></app-circular-spinner>

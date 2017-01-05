@@ -11,6 +11,8 @@ import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import { TagsComponent } from './tags/tags.component';
 import { ThumbnailComponent } from './thumbnail/thumbnail.component';
+import { CircularLoaderComponent } from './circular-spinner/circular-spinner.component';
+import { SubmitLinkPopupComponent } from './submit-link-popup/submit-link-popup.component';
 @NgModule({
   imports: [FormsModule, RouterModule, CommonModule],
   declarations: [
@@ -19,7 +21,9 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
     NavComponent,
     BreadcrumbComponent,
     TagsComponent,
-    ThumbnailComponent
+    ThumbnailComponent,
+    CircularLoaderComponent,
+    SubmitLinkPopupComponent
   ],
   exports: [
     CommonModule,
@@ -29,7 +33,9 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
     NavComponent,
     TagsComponent,
     BreadcrumbComponent,
-    ThumbnailComponent
+    ThumbnailComponent,
+    CircularLoaderComponent,
+    SubmitLinkPopupComponent
   ]
 })
 export class SharedModule {}

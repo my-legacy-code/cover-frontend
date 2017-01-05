@@ -1,0 +1,52 @@
+@import "../../../shared/easings"
+@import "../../../shared/shadows"
+
+\:host
+  display: block
+  visibility: hidden
+  transition: left $ease-out-expo, top $ease-out-expo, opacity $ease-out-expo
+  &.active
+    visibility: visible
+    opacity: 0.95
+  white-space: nowrap
+  z-index: 10
+  width: 330px
+  height: 40px
+  background-color: #F8F8F8
+  opacity: 0
+  margin-top: -12px
+  filter: drop-shadow($strong-shadow)
+  border-radius: 4px
+  &:after
+    content: ''
+    width: 0
+    height: 0
+    position: absolute
+    left: 50%
+    margin-left: -12px
+    top: 40px
+    border-left: 12px solid transparent
+    border-right: 12px solid transparent
+    border-top: 8px solid #f8f8f8
+.link-field
+  width: 100%
+  box-sizing: border-box
+  height: 100%
+  outline: none
+  padding: 0 40px 0 20px
+  font-size: 16px
+  border: none
+  background-color : transparent
+
+app-circular-spinner
+  position: absolute
+  opacity: 0
+  transition: opacity $ease-out-expo
+  &.active
+    opacity: 1
+  float: right
+  width: 30px
+  height: 30px
+  top: 5px
+  z-index: 10
+  right: 5px

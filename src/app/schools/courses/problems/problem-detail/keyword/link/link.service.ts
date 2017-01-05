@@ -55,6 +55,6 @@ export class LinkService {
   }
 
   linksObservable(keywordId: string): Observable<Link[]> {
-    return this.allLinks.map((allLinks) => allLinks[keywordId] || []);
+    return this.allLinks.map((allLinks) => allLinks[keywordId]);
   }
 }

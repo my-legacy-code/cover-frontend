@@ -4,13 +4,10 @@
      (mousedown)="deselect($event)"
      (mouseover)="onMouseOver($event)">
 </div>
-<div id="submit-link-popup"
-     class="submit-link-popup"
-     [ngClass]="{'active': selected}"
-     [ngStyle]="{'top.px': popupTop, 'left.px': popupLeft}">
-  <input id="link-field"
-         class="link-field"
-         placeholder="Enter to submit link, Esc to cancel"
-         (keydown)="onKeydown($event)"
-         [(ngModel)]="link">
-</div>
+<app-submit-link-popup
+  [ngClass]="{'active': selected}"
+  [ngStyle]="{'top.px': popupTop, 'left.px': popupLeft}"
+  [loading]="loading"
+  (onSubmitLink)="submitLink($event)"
+  (onCancel)="cancel()"
+  #submitLinkPopupComponent></app-submit-link-popup>

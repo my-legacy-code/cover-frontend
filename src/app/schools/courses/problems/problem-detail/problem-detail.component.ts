@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ProblemService} from "../shared/problem.service";
 import {Problem} from "../shared/problem.model";
@@ -20,6 +20,9 @@ export class ProblemDetailComponent implements OnInit {
   problem: Problem;
   tags: string[];
   navLocations: NavLocation[];
+
+  @ViewChild('problemBodyComponent') problemBodyComponent;
+
   // switched order
   constructor(private route: ActivatedRoute,
               private schoolService: SchoolService,
@@ -88,5 +91,11 @@ export class ProblemDetailComponent implements OnInit {
 
   getValidKeywords(): Keyword[] {
     return this.keywords.filter((keyword) => keyword.id);
+  }
+
+  addLink(data) {
+    let keyword: Keyword = data.keyword,
+      url: string = data.url;
+    console.log(keyword, url);
   }
 }
