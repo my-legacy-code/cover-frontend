@@ -1,6 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input} from "@angular/core";
 import {Keyword} from "../../../../../shared/Keyword";
 import {Link} from "../../../../../shared/Link";
+import {Observable} from "rxjs";
+import {LinkService} from "./link/link.service";
 
 @Component({
   selector: 'app-keyword',
@@ -10,22 +12,18 @@ import {Link} from "../../../../../shared/Link";
 export class KeywordComponent implements OnInit {
 
   @Input() keyword: Keyword;
+  linksStream: Observable<Link[]>;
   links: Link[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
-    this
-      .keyword
-      .links
-      .subscribe((links)=> {
-        this.links = links;
-        console.log(links);
-      });
+  constructor(private linkService: LinkService) {
   }
 
-  getKeywordTitle(): string {
-    return this.keyword.content;
+  ngOnInit() {
+    this.linksStream = this.linkService.linksObservable(this.keyword.id);
+    this.linksStream
+      .subscribe((links) => {
+        this.links = links;
+      })
   }
 
   sortedLinks(): Link[] {

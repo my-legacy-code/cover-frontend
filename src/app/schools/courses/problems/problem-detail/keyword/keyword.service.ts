@@ -4,7 +4,6 @@ import {Keyword} from "../../../../../shared/Keyword";
 import {ProblemService} from "../../shared/problem.service";
 import {environment} from "../../../../../../environments/environment";
 import {Http, Response} from "@angular/http";
-import {LinkService} from "./link/link.service";
 
 interface IKeywordsOperation extends Function {
   (keywords: Keyword[]): Keyword[];
@@ -19,24 +18,14 @@ export class KeywordService {
   private operations: Subject<IKeywordsOperation> = new Subject<IKeywordsOperation>();
   private index: Subject<string> = new Subject<string>();
 
-  constructor(private problemService: ProblemService, private linkService: LinkService, private http: Http) {
+  constructor(private problemService: ProblemService, private http: Http) {
 
     this.keywords = this.operations
       .scan((keywords: Keyword[], operation) => operation(keywords),
-        initialKeywords);
+        initialKeywords)
+      .publishReplay(1)
+      .refCount();
 
-    // this.index
-    //   .flatMap((requestUrl: string) => http.get(requestUrl))
-    //   .map(this.extractData)
-    //   .combineLatest(
-    //     problemService.currentProblemObservable(),
-    //     (newKeywords, problem) =>
-    //       (keywords) =>
-    //         Object.assign([], newKeywords.map((k: Keyword) =>
-    //           Object.assign({}, k, {content: problem.body.substr(k.start, k.length)
-    //       })))
-    //   )
-    //   .subscribe(this.operations);
     this.index
       .flatMap((requestUrl: string) => http.get(requestUrl))
       .map(this.extractData)
@@ -45,11 +34,7 @@ export class KeywordService {
         (newKeywords, problem) =>
           (keywords) =>
             Object.assign([], newKeywords.map((k: Keyword) =>
-              Object.assign({}, k,
-                {
-                  content: problem.body.substr(k.start, k.length),
-                  links: linkService.getLinksObservable(k.id)
-          })))
+              Object.assign({}, k, {content: problem.body.substr(k.start, k.length)})))
       )
       .subscribe(this.operations);
 
@@ -68,7 +53,6 @@ export class KeywordService {
 
   extractData(res: Response): any{
     let body = res.json();
-    console.log(body);
     return body || {};
   }
 }
