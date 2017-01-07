@@ -1,0 +1,21 @@
+<div class="center">
+  <div class="logo" routerLink="/"></div>
+  <div class="search-box">
+    <input class="search-input" placeholder="School / course / problem / keyword">
+    <div class="search-btn"></div>
+  </div>
+  <img class="avatar" [src]="'byliuyang11@gmail.com' | avatar">
+  <ul class="new-buttons">
+    <li class="new-button new-problem-button"
+        title="Create a problem"
+        [routerLink]="['/new','problem']">
+      Add problem
+    </li>
+    <li class="new-button new-course-button"
+        title="Create a course"
+        [routerLink]="['/new','course']">
+      Add course
+    </li>
+  </ul>
+</div>
+

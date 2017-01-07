@@ -1,10 +1,11 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
+import {HomeComponent} from "./home/home.component";
 /**
  * Created by harryliu on 12/18/16.
  */
 const appRoutes: Routes = [
-  // {path: ''}
+  {path: '', component: HomeComponent}
 ];
 
 @NgModule({

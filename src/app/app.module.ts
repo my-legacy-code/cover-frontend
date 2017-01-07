@@ -3,32 +3,28 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {CoreModule} from "./core/core.module";
 import {AppRoutingModule} from "./app-routing.module";
-import {StaticsModule} from "./statics/statics.module";
-import {ProblemsModule} from "./schools/courses/problems/problems.module";
 import {SharedModule} from "./shared/shared.module";
-import {SchoolsModule} from "./schools/schools.module";
-import {CoursesModule} from "./schools/courses/courses.module";
-import {SchoolService} from "./schools/shared/school.service";
-import {ProblemService} from "./schools/courses/problems/shared/problem.service";
-import {CourseService} from "./schools/courses/shared/course.service";
-import {KeywordService} from "./schools/courses/problems/problem-detail/keyword/keyword.service";
-import {LinkService} from "./schools/courses/problems/problem-detail/keyword/link/link.service";
+import {SchoolService} from "./topbar-pages/schools/shared/school.service";
+import {ProblemService} from "./topbar-pages/schools/courses/problems/shared/problem.service";
+import {CourseService} from "./topbar-pages/schools/courses/shared/course.service";
+import {KeywordService} from "./topbar-pages/schools/courses/problems/problem-detail/keyword/keyword.service";
+import {LinkService} from "./topbar-pages/schools/courses/problems/problem-detail/keyword/link/link.service";
+import {HomeComponent} from "./home/home.component";
+import {TopbarPageModule} from "./topbar-pages/topbar-page.module";
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    StaticsModule,
-    ProblemsModule,
-    SchoolsModule,
-    CoursesModule
+    TopbarPageModule
   ],
   providers: [
     SchoolService,

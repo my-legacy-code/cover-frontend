@@ -1,0 +1,22 @@
+@import "../../../shared/easings"
+
+\:host
+  background: transparent
+  width: 4px
+  padding: 4px 4px 4px 0
+  position: relative
+  opacity: 0
+  transition: opacity $ease-out-expo,
+
+\:host-context(.show)
+  opacity: 1
+
+.track
+  position: relative
+  width: 4px
+  border-radius: 2px
+  transition: background-color $ease-out-expo, height $ease-out-expo, top $ease-out-expo
+  background-color: rgba(0, 0, 0, 0.2)
+  &:hover
+    cursor: pointer
+    background-color: rgba(0, 0, 0, 0.4)

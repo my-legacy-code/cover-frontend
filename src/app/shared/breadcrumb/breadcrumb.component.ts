@@ -1,13 +1,12 @@
-import {Component, Input} from '@angular/core';
-// import {Problem} from "../../shared/problem.model";
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {NavLocation} from "./nav-location.model";
 
 @Component({
   selector: 'app-breadcrumb',
   templateUrl: './breadcrumb.component.html',
-  styleUrls: ['./breadcrumb.component.sass']
+  styleUrls: ['./breadcrumb.component.sass'],
+  encapsulation: ViewEncapsulation.Native
 })
 export class BreadcrumbComponent{
-  // @Input() problem: Problem;
   @Input() navLocations: NavLocation[];
 }

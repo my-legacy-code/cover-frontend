@@ -1,9 +1,10 @@
-import {Component, OnInit, Input, EventEmitter, Output, ElementRef} from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output, ElementRef, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-submit-link-popup',
   templateUrl: './submit-link-popup.component.html',
-  styleUrls: ['./submit-link-popup.component.sass']
+  styleUrls: ['./submit-link-popup.component.sass'],
+  encapsulation: ViewEncapsulation.Native
 })
 export class SubmitLinkPopupComponent implements OnInit {
 

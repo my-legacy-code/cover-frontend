@@ -1,0 +1,85 @@
+@import "../../../shared/colors"
+@import "../../../shared/easings"
+
+\:host
+  display: block
+  position: relative
+  padding: 24px 0 8px 0
+  z-index: 1
+
+\:host-context(.error)
+  .error-message
+    margin-top: 6px
+    color: var(--tf-error-color)
+    font-size: 12px
+    font-weight: 600
+  label
+    color: var(--tf-error-color)
+    &.empty
+      padding: 0
+      font-size: 12px
+      top: 12px
+    &.focused
+      color: var(--tf-error-color)
+  .underline
+    .ripple
+      background-color: var(--tf-error-color)
+      transform: scaleY(2)
+    &.focused
+      .ripple
+        background-color: var(--tf-error-color)
+  [tfInput]
+    color: var(--tf-error-color)
+
+[tfInput]
+  width: 100%
+  font-size: 16px
+  outline: none
+  background-color: transparent
+  padding: 0
+  margin: 6px 0
+  border: none
+  box-sizing: border-box
+  resize: none
+  line-height: 1.2
+
+textarea[tfInput]
+  word-break: break-all
+  overflow: hidden
+  height: var(--tf-textarea-height)
+
+label
+  position: absolute
+  z-index: -1
+  top: 12px
+  font-size: 12px
+  padding: 0
+  left: 0
+  &.empty
+    font-size: 16px
+    padding: 6px 0
+    top: 24px
+  &.focused
+    color: var(--tf-primary-color)
+    padding: 0
+    font-size: 12px
+    top: 12px
+  width: 100%
+  bottom: 0
+  font-weight: 600
+  color: $silver-chalice
+  box-sizing: border-box
+  transition: all $ease-out-expo
+.underline
+  height: 1px
+  background-color: rgba(0,0,0,.12)
+  .ripple
+    background-color: transparent
+    height: 1px
+    transition: all $ease-out-expo
+  &.focused
+    .ripple
+      background-color: var(--tf-primary-color)
+      transform: scaleY(2)
+.error-message
+  min-height: 16px

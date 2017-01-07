@@ -4,18 +4,14 @@
 @import "../shared/shadows"
 @import "../shared/diviers"
 
-.btn
-  box-shadow : $material-depth1-shadow
-  color : white
-  text-align : center
-  transition : all $ease-out-expo
-  border-radius : 4px
-  &.nero
-    background-color : $nero
-    &:hover
-      cursor : pointer
-      background-color : white
-      color : $nero
+\:host
+  display: block
+  overflow: hidden
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
 
 footer
   width : 1024px
@@ -48,3 +44,10 @@ footer
       font-size : 12px
       vertical-align : top
       margin-left : 10px
+
+app-scrollbar
+  position: fixed
+  top: 0
+  bottom: 0
+  right: 0
+  z-index: 1000

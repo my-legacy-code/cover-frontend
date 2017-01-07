@@ -5,9 +5,6 @@
   display: block
   visibility: hidden
   transition: left $ease-out-expo, top $ease-out-expo, opacity $ease-out-expo
-  &.active
-    visibility: visible
-    opacity: 0.95
   white-space: nowrap
   z-index: 10
   width: 330px
@@ -28,6 +25,11 @@
     border-left: 12px solid transparent
     border-right: 12px solid transparent
     border-top: 8px solid #f8f8f8
+
+\:host-context(.active)
+  visibility: visible
+  opacity: 0.95
+
 .link-field
   width: 100%
   box-sizing: border-box

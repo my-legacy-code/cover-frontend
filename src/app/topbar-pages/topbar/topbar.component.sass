@@ -1,0 +1,78 @@
+@import "../../../shared/colors"
+@import "../../../shared/shadows"
+
+\:host
+  background-color: white
+  padding: 10px 0
+  display: block
+  box-shadow: $material-depth1-shadow
+.center
+  width: 1024px
+  margin-left: auto
+  margin-right: auto
+  display: flex
+  flex-direction: row
+.search-box
+  margin: 0 30px
+  position: relative
+  .search-input
+    box-sizing: border-box
+    width: 100%
+    margin: 0
+    font-size: 18px
+    padding: 6px 22px 6px 0
+    color: gray
+    outline: none
+    border-top: none
+    border-left: none
+    border-right: none
+    border-bottom: 2px solid grey
+  .search-btn
+    top: 50%
+    right: 0
+    margin-top: -9px
+    position: absolute
+    background-image: url('/assets/img/icons/ic-search.svg')
+    width: 18px
+    height: 18px
+    background-position: center
+    background-repeat: no-repeat
+    background-size: contain
+    &:hover
+      cursor: pointer
+.avatar
+  width: 36px
+  height: 36px
+  border-radius: 4px
+  margin-right: 16px
+.logo
+  width: 30px
+  height: 30px
+  background-position: center
+  background-repeat: no-repeat
+  background-size: contain
+  background-image: url('/assets/img/logo-grey.svg')
+  &:hover
+    cursor: pointer
+.search-box
+  flex: 1
+.new-buttons
+  font-size: 0
+  margin: 0
+  list-style: none
+  padding: 0
+.new-button
+  &:not(:last-child)
+    margin-right: 16px
+  display: inline-block
+  padding: 6px 20px
+  font-size: 18px
+  color: white
+  border-radius: 4px
+  &:hover
+    opacity: 0.8
+    cursor: pointer
+.new-course-button
+  background-color: $barney
+.new-problem-button
+  background-color: $lipstick

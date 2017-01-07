@@ -1,0 +1,16 @@
+<h1>Create problem</h1>
+<app-text-field class="error" [(value)]="school" [error]="error">
+  <div class="title">School</div>
+  <input type="text" tfInput>
+</app-text-field>
+<app-text-field [(value)]="school">
+  <div class="title">Course</div>
+  <input type="text" tfInput>
+</app-text-field>
+<app-text-field [(value)]="problemBody">
+  <div class="title">Problem Body</div>
+  <textarea tfInput></textarea>
+</app-text-field>
+<div class="btn submit">
+  Submit
+</div>

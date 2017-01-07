@@ -1,0 +1,8 @@
+<ng-content select="input, textarea"></ng-content>
+<label [ngClass]="{empty: empty, focused: focused}">
+  <ng-content select=".title"></ng-content>
+</label>
+<div class="underline" [ngClass]="{focused: focused}">
+  <div class="ripple"></div>
+</div>
+<div class="error-message">{{error}}</div>

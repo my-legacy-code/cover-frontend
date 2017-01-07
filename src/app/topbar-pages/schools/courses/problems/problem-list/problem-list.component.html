@@ -1,0 +1,7 @@
+<app-breadcrumb [navLocations]="navLocation"></app-breadcrumb>
+<ul>
+  <app-thumbnail *ngFor="let problem of problems"
+                 [routerLink]="[problem.id]" (click)="setCurrentProblem(problem)">
+    <app-problem-row [problem]="problem"></app-problem-row>
+  </app-thumbnail>
+</ul>

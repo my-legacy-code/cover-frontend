@@ -8,7 +8,10 @@
   box-shadow: $material-depth1-shadow
   border-radius: 4px
   transition: box-shadow $ease-out-expo, transform $ease-out-expo
-  &:hover
-    cursor: pointer
-    box-shadow: $material-depth3-shadow
-    transform: scale(1.02)
+
+\:host(:hover)
+  cursor: pointer
+  box-shadow: $material-depth3-shadow
+  transform: scale(1.02)
+app-text-field
+  width: 100%
