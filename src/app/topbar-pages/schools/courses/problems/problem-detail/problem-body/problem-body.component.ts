@@ -135,7 +135,8 @@ export class ProblemBodyComponent implements OnInit, OnChanges{
       case "Enter":
         break;
       default:
-        if(this.showPopup) this.shadowRoot.querySelector('#link-field').focus();
+        if(this.showPopup)
+          this.submitLinkPopupComponent.focus();
 
         break;
     }

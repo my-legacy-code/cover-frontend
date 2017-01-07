@@ -33,4 +33,8 @@ export class SubmitLinkPopupComponent implements OnInit {
   clear() {
     this.url = '';
   }
+
+  focus() {
+    this.el.nativeElement.shadowRoot.querySelector('#link-field').focus();
+  }
 }
