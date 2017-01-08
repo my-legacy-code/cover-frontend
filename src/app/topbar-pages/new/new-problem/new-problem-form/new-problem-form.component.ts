@@ -7,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewProblemFormComponent implements OnInit {
 
+  title: string = '';
   school: string = '';
-  course: string;
+  courseNumber: string = '';
+  term: string = '';
+  year: string = '';
+  instructor: string = '';
   problemBody: string = '';
-  error: string = 'School cannot be empty';
+  error: string = 'Title cannot be empty';
 
   constructor() { }
 

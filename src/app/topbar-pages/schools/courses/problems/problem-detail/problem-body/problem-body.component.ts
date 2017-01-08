@@ -69,7 +69,7 @@ export class ProblemBodyComponent implements OnInit, OnChanges {
     }, 0);
   }
 
-  getLocation(event) {
+  selectKeyword(event) {
     let range = this._getRange();
     if (range) {
       if (this._notKeyword(range)) {
