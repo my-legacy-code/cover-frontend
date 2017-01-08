@@ -3,10 +3,13 @@
 \:host
   display: block
   margin-top: 18px
+  position: relative
 
 .problem-body
   outline: none
   white-space: pre-wrap
+  position: relative
+  z-index: 1
 
 a
   color: rgb(0, 112, 201)
@@ -16,7 +19,14 @@ a
     text-decoration: underline
 
 .selected
+  position: absolute
+  z-index: 0
+  width: 0
+  height: 0
   background-color: #B9DBFA
+  visibility: hidden
+  &.show
+    visibility: visible
 
 app-submit-link-popup
   position: absolute

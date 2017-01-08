@@ -2,9 +2,9 @@ import {Pipe, PipeTransform} from "@angular/core";
 import {Keyword} from "../../../../../../shared/Keyword";
 
 @Pipe({
-  name: "highlight"
+  name: "keyword"
 })
-export class HighlightPipe implements PipeTransform {
+export class KeywordPipe implements PipeTransform {
 
   constructor() {
 
@@ -29,14 +29,8 @@ export class HighlightPipe implements PipeTransform {
   }
 
   formatKeyword(htmlParts, text, keyword, index) {
-    if (!keyword.selected) {
       htmlParts.push(`<a data-keyword-id="${keyword.id}" href="${keyword.bestLinkUrl}" target="_blank">`);
       htmlParts.push(`${text}[${index + 1}]`);
       htmlParts.push(`</a>`);
-    } else {
-      htmlParts.push(`<span class="selected">`);
-      htmlParts.push(text);
-      htmlParts.push(`</span>`);
-    }
   }
 }

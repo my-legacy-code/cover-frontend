@@ -4,6 +4,14 @@
      (mouseover)="onMouseOver($event)"
      #problemBodyEl>
 </div>
+<div class="selected"
+     [ngClass]="{'show': selected}"
+     [ngStyle]="{
+     'width.px': highlighterWidth,
+     'height.px': highlighterHeight,
+     'left.px': highlighterLeft,
+      'top.px': highlighterTop}">
+</div>
 <app-submit-link-popup
   [ngClass]="{'active': showPopup}"
   [ngStyle]="{'top.px': popupTop, 'left.px': popupLeft}"
