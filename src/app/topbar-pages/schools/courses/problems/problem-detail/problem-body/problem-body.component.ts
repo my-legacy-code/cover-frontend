@@ -89,6 +89,7 @@ export class ProblemBodyComponent implements OnInit, OnChanges {
 
         // Setup popup window
         this.updatePopupPosition(rect);
+        this._clearRange();
       }
     }
   }
@@ -192,6 +193,10 @@ export class ProblemBodyComponent implements OnInit, OnChanges {
 
   deselect() {
     this.selected = false;
+    this._clearRange();
+  }
+
+  _clearRange() {
     window.getSelection().removeAllRanges()
   }
 
