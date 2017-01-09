@@ -46,7 +46,8 @@ import { ScrollbarComponent } from './scrollbar/scrollbar.component';
     CardComponent,
     TextFieldComponent,
     TFInputDirective,
-    ScrollbarComponent
+    ScrollbarComponent,
+    SnackbarComponent
   ]
 })
 export class SharedModule {}

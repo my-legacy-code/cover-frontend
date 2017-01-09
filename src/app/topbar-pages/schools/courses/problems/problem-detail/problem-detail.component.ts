@@ -8,6 +8,7 @@ import {TermYearPipe} from "../../shared/term-year.pipe";
 import {NavLocation} from "../../../../../shared/breadcrumb/nav-location.model";
 import {SchoolService} from "../../../shared/school.service";
 import {KeywordService} from "./keyword/keyword.service";
+import {NotificationService, Notification, NotificationTiming} from "../../../../../core/notification.service";
 
 @Component({
   selector: 'app-problem-detail',
@@ -29,7 +30,8 @@ export class ProblemDetailComponent implements OnInit {
               private schoolService: SchoolService,
               private problemService: ProblemService,
               private courseService: CourseService,
-              private keywordService: KeywordService) {
+              private keywordService: KeywordService,
+              private notificationService:NotificationService) {
   }
 
   ngOnInit() {
@@ -97,6 +99,19 @@ export class ProblemDetailComponent implements OnInit {
   addLink(data) {
     let keyword: Keyword = data.keyword,
       url: string = data.url;
-    console.log(keyword, url);
+
+    let notification: Notification = {
+      message: 'Link was added successfully.',
+      action: {
+        name: 'show',
+        task: ()=>{
+          console.log(keyword, url);
+        }
+      },
+      timing: NotificationTiming.middle
+    };
+
+    this.notificationService
+      .send(notification);
   }
 }

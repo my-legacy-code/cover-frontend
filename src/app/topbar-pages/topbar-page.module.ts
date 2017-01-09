@@ -7,6 +7,7 @@ import {SchoolsModule} from "./schools/schools.module";
 import {NewModule} from "./new/new.module";
 import {TopbarComponent} from "./topbar/topbar.component";
 import {SharedModule} from "../shared/shared.module";
+import {AuthenticationModule} from "./authentication/authentication.module";
 /**
  * Created by harryliu on 1/5/17.
  */
@@ -21,7 +22,8 @@ import {SharedModule} from "../shared/shared.module";
     CoursesModule,
     SchoolsModule,
     NewModule,
-    SharedModule
+    SharedModule,
+    AuthenticationModule
   ]
 })
 export class TopbarPageModule {}

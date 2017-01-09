@@ -1,0 +1,35 @@
+@import "../../../shared/colors"
+@import "../../../shared/shadows"
+@import "../../../shared/easings"
+\:host
+  position: absolute
+  display: flex
+  flex-direction: row
+  top: 76px
+  left: 100%
+  z-index: 500
+  font-size: 0
+  padding: 16px 26px
+  background-color: $night-rider
+  border-radius: 2px
+  box-shadow: $material-depth1-shadow
+  opacity: 0
+  transition: all 1s
+  align-items: center
+
+\:host-context(.active)
+  opacity: 1
+
+.message
+  color: white
+  font-size: 14px
+  margin-right: 60px
+  white-space: nowrap
+.action
+  color: $lemon
+  font-size: 12px
+  font-weight: 600
+  text-transform: uppercase
+  white-space: nowrap
+  &:hover
+    cursor: pointer
