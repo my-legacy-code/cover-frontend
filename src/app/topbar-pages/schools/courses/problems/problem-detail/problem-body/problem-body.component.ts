@@ -79,14 +79,10 @@ export class ProblemBodyComponent implements OnInit, OnChanges {
 
         let start = this.getStart(range),
           length = range.endOffset - range.startOffset;
-
         this._setEditingKeyword(start, length);
-
         let rect = range.getBoundingClientRect();
-
         // Setup highlighter
         this.updateHighlighterPosition(rect);
-
         // Setup popup window
         this.updatePopupPosition(rect);
         this._clearRange();
