@@ -52,7 +52,7 @@ export class SchoolService {
   getSchool(schoolId: string) {
     this.currentSchool.next(
       {
-        id: 'c3d04441-8322-42e7-ac84-ec9d329ecd1f',
+        id: '23745c5f-a88a-41d5-8021-1a66342fd3ce',
         acronym: 'WPI',
         name: 'Worcester Polytechnic Institute'
       }
