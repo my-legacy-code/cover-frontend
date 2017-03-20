@@ -18,7 +18,7 @@ export class LinkService {
   operations: Subject<ILinksOperation> = new Subject<ILinksOperation>();
   constructor(private http: Http, private keywordService: KeywordService) {
     this.allLinks = this.operations
-      .scan((links: {[keywordId: string]: Link[]}, operation) =>
+      .scan((links: {[keywordId: string]: Link[]}, operation: ILinksOperation) =>
           operation(links),
         initialLinks);
 

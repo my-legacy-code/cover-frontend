@@ -1,14 +1,7 @@
-import {Pipe, PipeTransform} from "@angular/core";
+import {PipeTransform} from "@angular/core";
 import {Keyword} from "../../../../../../shared/Keyword";
 
-@Pipe({
-  name: "keyword"
-})
 export class KeywordPipe implements PipeTransform {
-
-  constructor() {
-
-  }
 
   transform(problemBody: string, keywords: Keyword[]): string {
     keywords.sort((v1: Keyword, v2: Keyword):number => v1.start - v2.start );

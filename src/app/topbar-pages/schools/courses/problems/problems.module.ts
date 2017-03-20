@@ -7,7 +7,7 @@ import {HttpModule} from "@angular/http";
 import { ProblemDetailComponent } from './problem-detail/problem-detail.component';
 import { ProblemHeaderComponent } from './problem-detail/problem-header/problem-header.component';
 import { ProblemBodyComponent } from './problem-detail/problem-body/problem-body.component';
-import {KeywordPipe} from "./problem-detail/problem-body/keyword.pipe";
+// import {KeywordPipe} from "./problem-detail/keyword/keyword.pipe";
 import {KeywordComponent} from './problem-detail/keyword/keyword.component';
 import { LinkComponent } from './problem-detail/keyword/link/link.component';
 import { VotesComponent } from './problem-detail/keyword/link/votes/votes.component';
@@ -36,7 +36,7 @@ import {ProblemsRoutingModule} from "./problems-routing.module";
     LinkiconPipe
   ],
   providers: [
-    KeywordPipe
+    // KeywordPipe
     ],
   exports: [
     ProblemListComponent

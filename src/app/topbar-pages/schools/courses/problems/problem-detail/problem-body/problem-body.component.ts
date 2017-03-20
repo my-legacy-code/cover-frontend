@@ -12,8 +12,8 @@ import {
   SimpleChanges
 } from "@angular/core";
 import {Keyword} from "../../../../../../shared/Keyword";
-import {KeywordPipe} from "./keyword.pipe";
 import set = Reflect.set;
+import {KeywordPipe} from "../keyword/keyword.pipe";
 
 @Component({
   selector: 'app-problem-body',
@@ -44,8 +44,9 @@ export class ProblemBodyComponent implements OnInit, OnChanges {
   highlighterHeight: number = 0;
   highlighterTop: number = 0;
   highlighterLeft: number = 0;
+  private highlightPipe: KeywordPipe = new KeywordPipe();
 
-  constructor(private el: ElementRef, private highlightPipe: KeywordPipe) {
+  constructor(private el: ElementRef) {
 
   }
 
