@@ -12,7 +12,6 @@ import {
   SimpleChanges
 } from "@angular/core";
 import {Keyword} from "../../../../../../shared/Keyword";
-import {setTimeout} from "timers";
 import {KeywordPipe} from "./keyword.pipe";
 import set = Reflect.set;
 
