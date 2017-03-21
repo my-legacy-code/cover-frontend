@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-new-problem-form',
   templateUrl: './new-problem-form.component.html',
-  styleUrls: ['./new-problem-form.component.sass']
+  styleUrls: ['./new-problem-form.component.sass'],
+  encapsulation: ViewEncapsulation.Native
 })
 export class NewProblemFormComponent implements OnInit {
 
