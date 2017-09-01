@@ -1,32 +1,25 @@
 <h1>Create a problem</h1>
-<app-text-field class="error" [(value)]="school" [error]="error">
-  <div class="title">Title</div>
-  <input type="text" tfInput>
+<app-text-field [title]="'Title'" [(value)]="title" [error]="error">
 </app-text-field>
-<app-text-field [(value)]="school">
-  <div class="title">School</div>
-  <input type="text" tfInput>
+
+<app-text-field [title]="'School'" [(value)]="school">
 </app-text-field>
-<app-text-field [(value)]="courseNumber">
-  <div class="title">Course Number</div>
-  <input type="text" tfInput>
+
+<app-text-field [title]="'Course Number'" [(value)]="courseNumber">
 </app-text-field>
-<app-text-field [(value)]="term">
-  <div class="title">Term</div>
-  <input type="text" tfInput>
+
+<app-text-field [title]="'Term'" [(value)]="term">
 </app-text-field>
-<app-text-field [(value)]="year">
-  <div class="title">Year</div>
-  <input type="text" tfInput>
+
+<app-text-field [title]="'Year'" [(value)]="year">
 </app-text-field>
-<app-text-field [(value)]="year">
-  <div class="title">Instructor</div>
-  <input type="text" tfInput>
+
+<app-text-field [title]="'Instructor'" [(value)]="instructor">
 </app-text-field>
-<app-text-field [(value)]="problemBody">
-  <div class="title">Problem Body</div>
-  <textarea tfInput></textarea>
+
+<app-text-field [multiLine]="true" [title]="'Problem Body'" [(value)]="problemBody">
 </app-text-field>
+
 <div class="btn submit">
   Submit
 </div>

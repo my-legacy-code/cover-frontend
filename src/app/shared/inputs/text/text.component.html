@@ -1,0 +1,9 @@
+<textarea *ngIf="multiLine" autoResize [ngClass]="{error: hasError()}" (focus)="onFocus()" (blur)="onBlur()" [value]="value" (input)="onValueChange($event.target.value)"></textarea>
+<input *ngIf="!multiLine" [ngClass]="{error: hasError()}" (focus)="onFocus()" (blur)="onBlur()" [value]="value" (input)="onValueChange($event.target.value)"/>
+<label [ngClass]="{empty: empty, focused: focused, error: hasError()}">
+  {{title}}
+</label>
+<div class="underline" [ngClass]="{focused: focused, error: hasError()}">
+  <div class="ripple"></div>
+</div>
+<div class="error-message">{{error}}</div>

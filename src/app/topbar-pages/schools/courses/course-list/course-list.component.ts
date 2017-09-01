@@ -36,8 +36,9 @@ export class CourseListComponent implements OnInit {
 
     this.courseService
       .coursesObservable()
-      .subscribe((courses: Course[]) =>
-        this.courses = courses
+      .subscribe((courses: Course[]) => {
+          this.courses = courses;
+        }
       );
 
     this.route.params

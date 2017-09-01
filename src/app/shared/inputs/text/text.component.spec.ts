@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { TextFieldComponent } from './text-field.component';
+import { TextFieldComponent } from './text.component';
 
 describe('TextFieldComponent', () => {
   let component: TextFieldComponent;

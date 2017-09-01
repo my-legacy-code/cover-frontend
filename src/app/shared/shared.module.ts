@@ -13,10 +13,10 @@ import { ThumbnailComponent } from './thumbnail/thumbnail.component';
 import { CircularLoaderComponent } from './circular-spinner/circular-spinner.component';
 import { SubmitLinkPopupComponent } from './submit-link-popup/submit-link-popup.component';
 import { CardComponent } from './card/card.component';
-import { TextFieldComponent } from './text-field/text-field.component';
-import {TFInputDirective} from "./text-field/text-field.directive";
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { ScrollbarComponent } from './scrollbar/scrollbar.component';
+import {TextInputComponent} from "./inputs/text/text.component";
+import {AutoResizeDirective} from "./inputs/auto-resize.directive";
 @NgModule({
   imports: [FormsModule, RouterModule, CommonModule],
   declarations: [
@@ -28,10 +28,10 @@ import { ScrollbarComponent } from './scrollbar/scrollbar.component';
     CircularLoaderComponent,
     SubmitLinkPopupComponent,
     CardComponent,
-    TextFieldComponent,
-    TFInputDirective,
+    TextInputComponent,
     SnackbarComponent,
-    ScrollbarComponent
+    ScrollbarComponent,
+    AutoResizeDirective
   ],
   exports: [
     CommonModule,
@@ -44,10 +44,10 @@ import { ScrollbarComponent } from './scrollbar/scrollbar.component';
     CircularLoaderComponent,
     SubmitLinkPopupComponent,
     CardComponent,
-    TextFieldComponent,
-    TFInputDirective,
+    TextInputComponent,
     ScrollbarComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    AutoResizeDirective
   ]
 })
 export class SharedModule {}

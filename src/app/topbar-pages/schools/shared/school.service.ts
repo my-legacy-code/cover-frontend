@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Observable, Subject, BehaviorSubject} from "rxjs";
 import {School} from "./school.model";
-import {environment} from "../../../../environments/environment";
 import {Http, Response} from "@angular/http";
+import {environment} from "../../../../environments/environment";
 
 export interface ISchoolOperation extends Function {
   (schools: School[]): School[];
@@ -52,7 +52,7 @@ export class SchoolService {
   getSchool(schoolId: string) {
     this.currentSchool.next(
       {
-        id: '9337afb2-c3ab-4207-878f-c3065131a2e7',
+        id: '78a7ee63-74f6-4496-a1e9-b2b622b75389',
         acronym: 'WPI',
         name: 'Worcester Polytechnic Institute'
       }
