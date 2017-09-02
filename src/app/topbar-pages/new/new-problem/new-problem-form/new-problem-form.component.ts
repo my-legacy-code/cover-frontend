@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-new-problem-form',
@@ -8,16 +9,42 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 })
 export class NewProblemFormComponent implements OnInit {
 
-  title: string = '';
-  school: string = '';
-  courseNumber: string = '';
-  term: string = '';
-  year: string = '';
-  instructor: string = '';
-  problemBody: string = '';
-  error: string = 'Title cannot be empty';
+  newProblemForm: FormGroup;
+  title: AbstractControl;
+  school: AbstractControl;
+  courseNumber: AbstractControl;
+  term: AbstractControl;
+  year: AbstractControl;
+  instructor: AbstractControl;
+  problemBody: AbstractControl;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {
+    this.initCreateProblemForm();
+  }
+
+  private initCreateProblemForm() {
+    this.newProblemForm = this.formBuilder.group({
+      title: '',
+      school: '',
+      courseNumber: '',
+      term: '',
+      year: '',
+      instructor: '',
+      problemBody: ''
+    });
+
+    this.title = this.newProblemForm.controls['title'];
+    this.school = this.newProblemForm.controls['school'];
+    this.courseNumber = this.newProblemForm.controls['courseNumber'];
+    this.term = this.newProblemForm.controls['term'];
+    this.year = this.newProblemForm.controls['year'];
+    this.instructor = this.newProblemForm.controls['instructor'];
+    this.problemBody = this.newProblemForm.controls['problemBody'];
+
+    this.newProblemForm.valueChanges.subscribe(value => {
+      console.log(value);
+    })
+  }
 
   ngOnInit() {
   }

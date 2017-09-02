@@ -4,7 +4,7 @@
 import {NgModule} from "@angular/core";
 import {FromNowPipe} from "./from-now.pipe";
 import { AvatarPipe } from './avatar.pipe';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BreadcrumbComponent} from "./breadcrumb/breadcrumb.component";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
@@ -18,7 +18,7 @@ import { ScrollbarComponent } from './scrollbar/scrollbar.component';
 import {TextInputComponent} from "./inputs/text/text.component";
 import {AutoResizeDirective} from "./inputs/auto-resize.directive";
 @NgModule({
-  imports: [FormsModule, RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FormsModule, ReactiveFormsModule],
   declarations: [
     FromNowPipe,
     AvatarPipe,
@@ -37,7 +37,6 @@ import {AutoResizeDirective} from "./inputs/auto-resize.directive";
     CommonModule,
     FromNowPipe,
     AvatarPipe,
-    FormsModule,
     TagsComponent,
     BreadcrumbComponent,
     ThumbnailComponent,
@@ -47,7 +46,8 @@ import {AutoResizeDirective} from "./inputs/auto-resize.directive";
     TextInputComponent,
     ScrollbarComponent,
     SnackbarComponent,
-    AutoResizeDirective
+    AutoResizeDirective,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule {}
