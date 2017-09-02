@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {TermValidator} from "../../../../shared/validators/term.validator";
 
 @Component({
   selector: 'app-new-problem-form',
@@ -18,32 +19,43 @@ export class NewProblemFormComponent implements OnInit {
   instructor: AbstractControl;
   problemBody: AbstractControl;
 
+  titleError: string;
+  schoolError: string;
+  courseNumberError: string;
+  termError: string;
+  yearError: string;
+  instructorError: string;
+  problemBodyError: string;
+
   constructor(private formBuilder: FormBuilder) {
     this.initCreateProblemForm();
   }
 
   private initCreateProblemForm() {
     this.newProblemForm = this.formBuilder.group({
-      title: '',
-      school: '',
-      courseNumber: '',
-      term: '',
-      year: '',
-      instructor: '',
-      problemBody: ''
+      title: ['', ],
+      school: [''],
+      courseNumber: [''],
+      term: ['', TermValidator.term],
+      year: [''],
+      instructor: [''],
+      problemBody: ['']
     });
 
-    this.title = this.newProblemForm.controls['title'];
-    this.school = this.newProblemForm.controls['school'];
-    this.courseNumber = this.newProblemForm.controls['courseNumber'];
-    this.term = this.newProblemForm.controls['term'];
-    this.year = this.newProblemForm.controls['year'];
-    this.instructor = this.newProblemForm.controls['instructor'];
-    this.problemBody = this.newProblemForm.controls['problemBody'];
+    this.validateNewProblemForm();
 
     this.newProblemForm.valueChanges.subscribe(value => {
-      console.log(value);
+      console.log(this.newProblemForm.valid, value);
+      this.validateNewProblemForm();
     })
+  }
+
+  private validateNewProblemForm() {
+    if(!this.newProblemForm.controls['term'].valid) {
+      if(this.newProblemForm.controls['term'].hasError('term'))
+        this.termError = 'Example Term: 16B';
+    } else
+      this.termError = null;
   }
 
   ngOnInit() {

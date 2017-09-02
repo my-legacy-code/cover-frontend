@@ -1,24 +1,24 @@
 <h1>Create a problem</h1>
 <form [formGroup]="newProblemForm">
-  <app-text-field [formControl]="title" [title]="'Title'" [error]="error">
+  <app-text-field [formControl]="newProblemForm.controls['title']" [title]="'Title'" [error]="titleError">
   </app-text-field>
 
-  <app-text-field [formControl]="school" [title]="'School'" >
+  <app-text-field [formControl]="newProblemForm.controls['school']" [title]="'School'" [error]="schoolError">
   </app-text-field>
 
-  <app-text-field [formControl]="courseNumber" [title]="'Course Number'">
+  <app-text-field [formControl]="newProblemForm.controls['courseNumber']" [title]="'Course Number'" [error]="courseNumberError">
   </app-text-field>
 
-  <app-text-field [formControl]="term" [title]="'Term'">
+  <app-text-field [formControl]="newProblemForm.controls['term']" [title]="'Term'" [error]="termError">
   </app-text-field>
 
-  <app-text-field [formControl]="year"  [title]="'Year'">
+  <app-text-field [formControl]="newProblemForm.controls['year']"  [title]="'Year'" [error]="yearError">
   </app-text-field>
 
-  <app-text-field [formControl]="instructor"  [title]="'Instructor'">
+  <app-text-field [formControl]="newProblemForm.controls['instructor']"  [title]="'Instructor'" [error]="instructorError">
   </app-text-field>
 
-  <app-text-field [formControl]="problemBody"  [multiLine]="true" [title]="'Problem Body'">
+  <app-text-field [formControl]="newProblemForm.controls['problemBody']"  [multiLine]="true" [title]="'Problem Body'" [error]="problemBodyError">
   </app-text-field>
   <div class="btn submit">
     Submit
