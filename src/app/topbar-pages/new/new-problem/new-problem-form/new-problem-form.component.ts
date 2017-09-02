@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup} from "@angular/forms";
 import {TermValidator} from "../../../../shared/validators/term.validator";
+import {CourseNumberValidator} from "../../../../shared/validators/course-number/course-number.validator";
 
 @Component({
   selector: 'app-new-problem-form',
@@ -35,7 +36,7 @@ export class NewProblemFormComponent implements OnInit {
     this.newProblemForm = this.formBuilder.group({
       title: ['', ],
       school: [''],
-      courseNumber: [''],
+      courseNumber: ['', CourseNumberValidator.courseNumber],
       term: ['', TermValidator.term],
       year: [''],
       instructor: [''],
@@ -53,9 +54,15 @@ export class NewProblemFormComponent implements OnInit {
   private validateNewProblemForm() {
     if(!this.newProblemForm.controls['term'].valid) {
       if(this.newProblemForm.controls['term'].hasError('term'))
-        this.termError = 'Example Term: 16B';
+        this.termError = 'Example term: 16B';
     } else
       this.termError = null;
+
+    if(!this.newProblemForm.controls['courseNumber'].valid) {
+      if(this.newProblemForm.controls['courseNumber'].hasError('courseNumber'))
+        this.courseNumberError = 'Example course number: CS1101';
+    } else
+      this.courseNumberError = null;
   }
 
   ngOnInit() {
